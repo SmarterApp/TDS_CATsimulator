@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<!-- Created with Inspiration® - http://www.inspiration.com -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Inspiration 9.0.3">
+<meta name="ORIGINATOR" content="Inspiration 9.0.3">
+<TITLE>Edit Segment</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<A NAME="TOP"></A>
+<ol TYPE=I START=2>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Edit Segment</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>StartAbility</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- This is the default ability theta that each student starts at for opportunity 1 unless there is historical data to the contrary. Note that for segmented tests, this value is only applicable to the first segment, unless all preceding segments have only field test items, or operational items that cannot be machine scored. The simulator always assumes that there is historical data and approximates a prior theta score by drawing a random number within +/- 1 of the simulated student's true theta.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>StartInfo</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- A seed for the internal information parameter. The default is 0.2 and it is best not to alter this.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>MinItems</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- Minimum number of operational items required on the test. (Field test items are specified separately.)</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>MaxItems</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- Maximum number of operational items allowed on the test.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>bpWeight</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- Weight of blueprint satisfaction relative to ability match. Ability match is always 1.0.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>cset1Size</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- Out of all item groups in the item pool, this many are passed on to the ability match algorithm. Cset1 consists of the best item groups for satisfying the blueprint at the current point in time (item 'i').</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>cset2InitRand </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Cset2 consists of the itemgroups from Cset1 ordered by the linear combination of abilityMatch + bpWeight * blueprintMatch. From this final ordering, one group is randomly chosen. How many of the top itemgroups are in the last cut at the very beginning of the test is determined by cset2InitRand.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>cset2Rand</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- Same as cset2InitRand but for every item selection after the first one.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>itemWeight</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- If item filtering is done on the itemgroup selected, this weight determines the balance between blueprint and ability metrics. It function the same as bpWeight but only in the context of item filtering.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>abilityOffset</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- is added to the ideal item 'b' value in computing ability match. To reduce the b value, make this negative. To increase it, make it positive. </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>selectionAlgorithm</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- adaptive: run the old adaptive algorithm, adaptive2: run the 2013 version of adaptive algorithm. </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>cset1Order</i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"> -- this is a secondary ordering on the item pool to produce cset1, after blueprint satisfaction. After blueprint satisfaction the algorithm sorts by one of ability match, item distribution, or randomly. Since this is a secondary sort it will only produce an ordering within subsets of itemgroups whose blueprint satisfaction metric is identical. In cases where there are few content levels, there could be very many itemgroups within a single metric. cset1Order of 'ALL' takes all itemgroups greater than or equal to the metric of the group at position cset1Size and passes them all along to the ability match phase. </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>ftmin </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- minimum number of field test items to administer</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>ftmax </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- maximum number of field test items to administer</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>ftstart </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- item position lower bound for field test items</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>ftend </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- item position upper bound for field test itemsQ</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>rcAbilityWeight </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Priority weight associated with reporting category information </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>abilityWeight </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Priority weight associated with overall information </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>precisionTargetNotMetWeight </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Parameter of the function h(.) that controls the overall information weight when the information target has not yet been hit </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>precisionTargetMetWeight </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Parameter of the function h(.) that controls the overall information weight after the information target has been hit </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>precisionTarget </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Target information for the overall test </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>adaptiveCut </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- The overall score cutscore, usually proficiency, used in consideration of TermTooClose </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>tooCloseSEs </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- The number of standard errors below which the difference is considered too close to the adaptive cut to proceed.  In general, this will signal proceeding to a final segment that contains off-grade items </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>terminationMinCount </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Flag indicating whether to use minimum test size as a termination condition </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>terminationOverallInfo </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Flag indicating whether to use the overall information target as a termination criterion </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>terminationRCInfo </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Flag indicating whether to use reporting category information target as a termination criterion </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>terminationTooClose </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Flag indicating whether we are not sufficiently distant from the specified adaptiveCut </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b><i>terminationFlagsAnd </i></b></FONT>
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">-- Flag indicating whether the termination conditions are to be taken separately or conjunctively </FONT>
+											   
+</ol> 
+<center><A HREF="../editblueprint-pages.html#TOP">Back</A></center>
+
+
+
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+</BODY>
+</HTML>

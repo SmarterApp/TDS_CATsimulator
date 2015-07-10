@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+	<entry key="ClientName">DBSimulator</entry>
+	<entry key="AppName">DBSimulator</entry>
+	
+	<entry key="EnableLoadData">false</entry>
+	 
+	<entry key="TDSSessionDBName">simsbacsession1</entry>
+	<entry key="ItembankDBName">simsbacitembank1</entry>
+	<entry key="TDSConfigsDBName">simsbacconfigs1</entry>
+	<entry key="TDSArchiveDBName">archive1</entry>	
+	<entry key="DBDialect">MYSQL</entry>
+	
+	<entry key="jdbc.url">jdbc:mysql://127.0.0.1:3306</entry>
+	<entry key="jdbc.userName">xxx</entry>
+    <entry key="jdbc.password">xxx</entry>
+    <entry key="jdbc.driverclass">com.mysql.jdbc.Driver</entry>
+    	
+	<entry key="AdditionalUrlParm">?useServerPrepStmts=false&amp;rewriteBatchedStatements=true</entry>
+	<entry key="keepSchema">true</entry>
+	   
+	<entry key="unitTests.useHardCodedBaseline">false</entry>
+</properties>
+

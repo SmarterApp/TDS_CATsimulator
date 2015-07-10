@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+
+		<!-- Refresh Loading Modal -->
+		<div id="loadingPanel" style="display: none; background-color: #ffffff; border-style: solid; border-width: medium; border-color: #000000; width: 300px">
+			<div class="yui3-widget-bd">
+				<h3>Loading Report...</h3>
+				<img src="../Shared/images/interstitial_loading.gif" alt="loading..." />
+			</div>
+		</div>
+		<!-- Start main body code -->
+		<div id="simApp">
+			<div id="clientSelect"></div>
+			<div id="navigation">
+				<ul class="leftNav">
+					<li><a href="#" class="current" id="navSetup">Reports</a></li>
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main" class="main-window">
+				<div id="window">
+					<h2>Report Summary Statistics</h2>
+					<p>&#xA0;</p>
+					<h3>Bias Report</h3>
+					<table id="table-report-1" class="simTable">
+					</table>
+					<br class="clear" /> <br />
+					<h3>Correlation (InitialAbility to FirstB)</h3>
+					<table id="table-report-2" class="simTable">
+					</table>
+					<br class="clear" /> <br />
+					<h3>Correlation (Average item difficulty to overall (scored) theta)</h3>
+					<table id="table-report-3" class="simTable">
+					</table>
+					<br class="clear" /> <br />
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript" src="SummaryStats.js"></script>
+	</ui:define>
+</ui:composition>

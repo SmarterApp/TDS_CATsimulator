@@ -1,0 +1,17 @@
+Task Track
+
+==============[ Difficulties
+TDS.WebSim.BLL
+	DefaultManagerSimTask
+		runSimulation: translate .NET Task to Java Thread
+
+==============[ Completed Classes
+TDS.WebSim.DAL
+	SessionDAO
+	ItembankDAO
+
+TDS.WebSim.BLL
+	DefaultWebSimTask
+	DefaultWebSimUserTask	
+	IBLoadTask
+

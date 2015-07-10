@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+		<!-- Remove the inline "display:none" to make the modal area show -->
+		<div id="modalContainer" style="display: none;"></div>
+
+		<!-- Start main body code -->
+		<div id="simApp">
+			<div id="clientSelect">
+				<label>Client:</label> <select id="ddlClientPicker" disabled="disabled">
+				</select>
+
+			</div>
+			<div id="navigation">
+				<ul class="leftNav">
+					<li><a href="../Setup/Session_Dashboard.xhtml">Setup Simulation Session</a></li>
+					<li><a href="Manage_Sessions.xhtml" class="current">Manage Simulation Session</a></li>
+					<li><a href="../LoadConfigs/LoadConfigs.xhtml" id="navLoadConfigs">Load Test Packages</a></li>
+				</ul>
+				<ul class="rightNav">
+					<li>&#160;</li>
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main">
+				<div id="window">
+
+					<!-- Session Test Details -->
+					<div id="simManageDetails" style="display: none">
+						<p class="breadcrumbs">
+							<a href="Manage_Sessions.xhtml">Manage Simulation Session</a>  View Session Details
+						</p>
+						<h2>
+							Simulation Details for Session:
+							<h:outputLabel id="lblSessionID" value="#{manageSession.hfsid} " />
+						</h2>
+						<form>
+							<label for="desc">Description:</label><input id="tbDesc" type="text" name="desc" size="30" disabled="disabled" /> <br class="clear" /> <label for="lang">Language:</label><select id="ddlLang"
+								name="lang" disabled="disabled"></select> <br class="clear" />
+						</form>
+						<table id="tblSimManageDetails" class="simTable">
+							<thead>
+								<tr>
+									<th>TestID</th>
+									<th>Iterations</th>
+									<th>Opps</th>
+									<th>Mean Proficiency</th>
+									<th>Std. Dev. of Prof</th>
+									<th>Strand Correlation</th>
+									<th>Hand Score Item Types</th>
+									<th>Progress</th>
+									<th>Reports</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="oddRow">
+									<td>HSA_OP-Reading-4</td>
+									<td>10</td>
+									<td>3</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0.8</td>
+									<td></td>
+									<td>2000/2000</td>
+									<td><select>
+											<option>Summary Stats</option>
+											<option>Blueprint Summary</option>
+											<option>Field Test Distribution</option>
+											<option>Item Distribution</option>
+											<option>Scores</option>
+											<option>Opportunities</option>
+											<option>Items Report</option>
+											<option>Form Distributions</option>
+											<option>Test Package</option>
+									</select> <a class="button view" href="#"><span>&#160;</span>Get Report</a></td>
+								</tr>
+								<tr class="evenRow">
+									<td>HSA_OP-Reading-4</td>
+									<td>10</td>
+									<td>3</td>
+									<td>0</td>
+									<td>1</td>
+									<td>0.8</td>
+									<td></td>
+									<td>1023/3000</td>
+									<td><select>
+											<option>Summary Stats</option>
+											<option>Blueprint Summary</option>
+											<option>Field Test Distribution</option>
+											<option>Item Distribution</option>
+											<option>Scores</option>
+											<option>Opportunities</option>
+											<option>Items Report</option>
+											<option>Form Distributions</option>
+											<option>Test Package</option>
+									</select> <a class="button view" href="#"><span>&#160;</span>Get Report</a></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+
+			<h:inputHidden id="ctl00_MainContent_hfId" />
+			<h:inputHidden id="ctl00_MainContent_hfsk" value="#{manageSession.hfsk}" />
+			<h:inputHidden id="ctl00_MainContent_hfcn" value="#{manageSession.hfcn}" />
+			<h:inputHidden id="ctl00_MainContent_hfst" value="#{manageSession.hfst}" />
+			<h:inputHidden id="ctl00_MainContent_hfdn" value="#{manageSession.hfdn}" />
+			<h:inputHidden id="ctl00_MainContent_hflg" value="#{manageSession.hflg}" />
+			<h:inputHidden id="ctl00_MainContent_hfsid" value="#{manageSession.hfsid}" />
+		</div>
+
+		<script type="text/javascript" src="Manage_Session.js"></script>
+
+	</ui:define>
+</ui:composition>

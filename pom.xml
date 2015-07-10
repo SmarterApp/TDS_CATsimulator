@@ -1,0 +1,43 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.opentestsystem.delivery</groupId>
+	<artifactId>tds.websim.master</artifactId>
+	<version>0.0.1</version>
+	<packaging>pom</packaging>
+	<modules>
+		<module>tds.websim.bll</module>
+		<module>tds.websim.dal</module>
+		<module>tds.websim.model</module>
+		<module>tds.websim.presentation</module>
+		<module>tds.websim.web.ui</module>
+		<module>dbsimulator</module>
+	</modules>
+	<name>TDS WebSim Master</name>
+	<parent>
+		<groupId>org.opentestsystem.shared</groupId>
+		<artifactId>shared-master</artifactId>
+		<version>1.0.1</version>
+	</parent>
+	<licenses>
+		<license>
+			<name>AIR-License-1.0</name>
+			<url>https://bitbucket.org/sbacoss/eotds/wiki/AIR_Open_Source_License</url>
+			<distribution>repo</distribution>
+			<comments>Educational Online Test Delivery System Copyright (c) 2013 American Institutes for Research</comments>
+		</license>
+	</licenses>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

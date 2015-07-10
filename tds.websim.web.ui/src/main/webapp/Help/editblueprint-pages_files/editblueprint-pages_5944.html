@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<!-- Created with Inspiration® - http://www.inspiration.com -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Inspiration 9.0.3">
+<meta name="ORIGINATOR" content="Inspiration 9.0.3">
+<TITLE>Segmented test considerations</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<A NAME="TOP"></A>
+<ol TYPE=I START=9>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Segmented test considerations</b></FONT>
+<ol TYPE=A>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Segment blueprints</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Each segment's blueprint is evaluated in total isolation from its 'siblings'. </FONT>
+<ol TYPE=1>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Number of items</b></FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Min/max</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">So the minimum number of items on any strand or content level is observed for that segment alone.</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Number administered</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">The number of items considered administered on a segment is  only for that segment. </FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Item masking</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Any itemgroup selected for any previous segment is removed from the pool for all subsequent segments. An itemgroup may be administered at most once on a test.</FONT>
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Strict max</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">The strict max is observed for the segment only. A test (all segments combined) is considered to have a strict max on a content level only if every instance of that content level on every segment is a strict max.</FONT>
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Intersecting item pools</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Items may appear in more than one segment, but will be administered at most once on any give test.</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Heterogeneous segments</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Because item selected is predetermined and immutable on fixed form segments, some rules must apply.</FONT>
+<ol TYPE=1>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Adaptive and fixed form</b></FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Adaptive preceding</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">If an adaptive segment precedes any fixed form segment, their item pools must be non-intersecting. That is, no item in the adaptive pool may exist in the fixed form pool. </FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Fixed form preceding</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">If an adaptive segment follows a fixed form segment, then its item pool may intersect with the fixed form item pool. That is because the adaptive segment will not select an item that has already been selected for a test.</FONT>
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Successive fixed form segments</b></FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Form cohorts</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">A segmented test in which each segment is a fixed form test often started out as a single fixed form test with multiple forms which was then divided into segments.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">It is critical to keep the segments of the original form together so they are labeled with a 'cohort' designator. Form segments with a common cohort designator are kept together on a test. </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">For this reason the following hold</FONT>
+<ol TYPE=1>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Items may not be duplicated on forms within a given cohort</b></FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Items may be duplicated on forms NOT on the same cohort</b></FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>The rules for mixing multiple form cohorts with adaptive segments still apply (adaptive preceding and succeeding).</b></FONT>
+</ol> 
+</ol> 
+</ol> 
+</ol> 
+</ol> 
+<center><A HREF="../editblueprint-pages.html#TOP">Back</A></center>
+
+
+
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+</BODY>
+</HTML>

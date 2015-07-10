@@ -1,0 +1,609 @@
+@charset "UTF-8";
+/* CSS Document */
+/* CSS File for AIR Web simulator */
+
+/* Group: Brought Over from Login for the header */
+
+.clear {
+    clear: both;
+    display: block;
+}
+.header {
+    border-bottom: 1px solid #04A033;
+}
+body {
+    font-family: Arial,Helvetica,sans-serif;
+    position: relative;
+}
+.wrapper {
+    font-size: 68%;
+	min-width: 1001px;
+    max-height:1000px;
+}
+.topBar {
+    background-color: #175283;
+    color: #FFFFFF;
+    height: 25px;
+    padding-right: 5px;
+}
+
+.smallButtons {
+}
+.smallButtons ul li{
+	float: right;
+	display: block;
+}
+.smallButtons ul li.userName{
+	font-weight: bold;
+	line-height: 1em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    margin-top: 6px;
+}
+.smallButtons label.userLabel{
+	font-weight: normal;
+}
+.smallButtons a {
+    background-color: #DBEDFB;
+    background-image: url("../images/btnBlueTop.gif");
+    background-position: left top;
+    background-repeat: no-repeat;
+    color: #000000 !important;
+    display: block;
+
+    line-height: 1em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    margin-top: 4px;
+    padding: 1px 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.smallButtons a:hover {
+    background-color: #04A033;
+    color: #FFFFFF !important;
+}
+.smallButtons a span {
+    background-image: url("../images/btnBlueBottom.gif");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    display: block;
+    margin: -1px -5px;
+    padding: 2px 5px;
+}
+.smallButtons .disabled, .smallButtons .disabled:hover {
+    background-color: #245C94;
+    border-color: #7AADE2;
+    color: #7AADE2;
+    cursor: default;
+}
+.logos {
+    background-color: #76A9D6;
+    background-image: url("../images/bigMountain.gif");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    border-top: 1px solid #FFFFFF;
+}
+.brand1 {
+    background-image: url("../images/logo_default_big.gif");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.brand1 h2 {
+    color: #FFFFFF;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding-left: 325px;
+    padding-top: 50px;
+}
+.brand1 h3 {
+    padding-left: 325px;
+}
+.brand2 {
+    background-color: #B7DA8C;
+    background-position: left top;
+    background-repeat: no-repeat;
+    border-top: 1px solid #04A033;
+    height: 2.5em;
+}
+.brand2 h3 {
+    background-image: url("../images/shadowboxes/greenGradient.gif");
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    border-left: 1px solid #04A033;
+    display: block;
+    float: right;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    padding: 0.2em 0.5em;
+}
+.footer {
+    color: #999999;
+    padding-right: 2em;
+    padding-top: 1em;
+    text-align: right;
+}
+.footer span, .footer a {
+    color: #9DBF73;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+.contentWrapper {
+    margin: 50px;
+    text-align: center;
+}
+/* Group End */
+
+/* Group: Regions and Containers */
+
+div#simApp{
+}
+
+/* End Group */
+
+/* Group: Client Selector */
+
+div#clientSelect{
+	background: #012b3b;
+	background: -moz-linear-gradient(top,#000,#012b3b);
+	background: -webkit-linear-gradient(top,#000,#012b3b);
+	background: -ms-linear-gradient(top,#000,#012b3b);
+	color: white;
+	padding: 0.5em 2em 0.5em 2em;
+}
+
+
+#clientSelect label{
+	font-size: 1.4em;
+	font-weight: bold;
+}
+
+#clientSelect select{
+	font-size: 1.0em;
+	margin-left: 1em;
+	font-weight: normal;
+}
+#clientSelect select option{
+	
+}
+/* Group End */
+
+/* Group: Tab Navigation & New Session Button */
+
+div#navigation{
+	padding: 1em 2em 0.5em 2em;
+	min-height: 2em;
+	background: #012b3b;
+	background: -moz-linear-gradient(top,#012b3b,#175283);
+	background: -webkit-linear-gradient(top,#012b3b,#175283);
+	background: -ms-linear-gradient(top,#012b3b,#175283);
+	overflow: hidden;
+}
+
+ul.leftNav{
+
+	list-style-type: none;
+}
+ul.leftNav li{
+	float: left;
+}
+
+ul.leftNav li a{
+	color: #666;
+	font-weight: bold;
+	text-decoration: none;
+}
+ul.leftNav li a{
+	background: #ddd;
+	/*background: -moz-linear-gradient(top,#eee,#999);
+	background: -webkit-linear-gradient(top,#eee,#999);
+	background: -ms-linear-gradient(top,#eee,#999);*/
+	border: 1px solid #000;
+	color: #666;
+	border-bottom: 1px solid black;
+	padding: 0.5em 0.5em 12px 0.5em;
+	z-index: 3;
+	font-size: 1.2em;
+}
+ul.leftNav li a.current{
+	color: #175283;
+	background: #fff;
+	z-index: 5;
+	padding-top: 0.7em;
+	padding-bottom: 13px;
+	border-bottom: none;
+}
+ul.leftNav li a:hover{
+	background-color: #eee;
+	color: #175283;
+	/*background: -moz-linear-gradient(top,#fff,#aaa);
+	background: -webkit-linear-gradient(top,#fff,#aaa);
+	background: -ms-linear-gradient(top,#fff,#aaa);*/
+}
+
+.rightNav{
+	float: right;
+}
+
+.rightNav a.button{
+	font-size: 1.2em;
+	padding: 0.2em 0.5em;
+	border: 1px solid #fff;
+	color: #fff;
+	text-decoration: none;
+	background: #175283;
+	/*box-shadow: 3px 3px 4px #999;*/
+}
+.rightNav a.button:hover{
+	background: #fff;
+	border-color: #175283;
+	color: #175283;
+}
+/* Group End */
+
+/* Group: Main and Table */
+
+div#main{
+	overflow: visible;
+}
+div#window{
+	margin: 0.5em 2em 0.5em 2em;
+}
+div#window h2{
+	font-size: 2em;
+}
+div#window form input, div#window form label, div#window form select{
+	display: block;
+	float: left;
+	margin: 0.5em 1em 0.5em 0;
+}
+fieldset.left select{
+	max-width: 100%;
+}
+fieldset.right select{
+	max-width: 100%;
+}
+div#window form label{
+	width: 10em;
+}
+
+div#window p.breadcrumbs{
+	font-size: 1em;
+	margin: 1em 0 1em 0;
+}
+div#window p.breadcrumbs a{
+	font-weight: bold;
+}
+
+table.simTable{
+	width: 100%;
+	border: 1px solid #333;
+}
+.simTable thead tr{
+	border: 1px solid #000;
+}
+.simTable th{
+	padding: 0.5em;
+	color: #000;
+	font-size: 1.2em;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	background-image: url("../images/shadowboxes/greenGradient.gif");
+    background-position: center bottom;
+    background-repeat: repeat-x;
+}
+.simTable tbody tr{
+	border-bottom: 1px solid #333;
+}
+.simTable td{
+	font-size: 1em;
+	padding: 0.5em;
+	border-right: 1px solid #333;
+	border-left: 1px solid #333;
+}
+.simTable tr.oddRow{
+	background: #fff;
+}
+.simTable tr.evenRow{
+	background: #eee;
+}
+
+.simTable a.button{
+	padding: 0.5em 0.5em;
+	border: 1px solid #000;
+	color: #000;
+	text-decoration: none;
+	margin: 0.2em 0.5em;
+	color: #fff;
+	text-decoration: none;
+	background: #175283;
+	min-height: 16px;
+}
+.simTable a.button span{
+	background-image: url("../images/sprites.gif");
+	background-repeat: none;
+	height: 22px;
+	padding-right: 7px;
+	width: 14px;
+	display:inline-block;	
+	vertical-align: middle;
+}
+.simTable a.button.copy span{background-position: 0px 0;}
+.simTable a.button.edit span{background-position: -20px 0;}
+.simTable a.button.delete span{background-position: -44px 0;}
+.simTable a.button.cancel span{background-position: 0px -61px;}
+.simTable a.button.run span{background-position: -89px 0;}
+.simTable a.button.view span{background-position: -68px 0;}
+.simTable a.button.export span{background-position: -171px 3px;}
+.simTable a.button.import span{background-position: -156px 1px;}
+.simTable a.button.copy:hover span{background-position: 0px -40px;}
+.simTable a.button.edit:hover span{background-position: -20px -40px;}
+.simTable a.button.delete:hover span{background-position: -44px -40px;}
+.simTable a.button.cancel:hover span{background-position: 0 -99px;}
+.simTable a.button.run:hover span{background-position: -89px -40px;}
+.simTable a.button.view:hover span{background-position: -68px -40px;}
+.simTable a.button.export:hover span{background-position: -171px -38px;}
+.simTable a.button.import:hover span{background-position: -156px -38px;}
+
+.simTable a.button:hover{
+	background: #fff;
+	border-color: #000;
+	color: #175283;
+}
+
+p.buttonRow{
+	margin: 1em 1em 1em 0;
+	font-size: 1.3em;
+}
+p.buttonRow.right{
+	float: right;
+	margin: 1em 0 1em 1em;
+}
+p.buttonRow.small{
+	font-size: 1.0em;
+}
+#window a.button{
+	font-size: 1.2em;
+	padding: 0.2em 0.5em;
+	border: 1px solid #000;
+	color: #fff;
+	text-decoration: none;
+	background: #175283;
+    display: inline-block;
+}
+#window a.button:hover{
+	background: #fff;
+	border-color: #175283;
+	color: #175283;
+}
+.window .simTable th, .window .simTable td{
+	vertical-align: middle;
+}
+
+/*specific Table widths*/
+#table-report-1{ width: 60%}
+#table-report-2{ width: 40%;}
+#table-report-3{ width: 50%;}
+#table-report-4{ width: 60%;}
+#table-report-5{ width: 50%;}
+#tblLoadConfigs{ width: 40%;}
+
+/* Group End */
+
+/* Group: Footer */
+
+div#footer{
+	margin: 0.5em 2em;
+}
+div#footer div{
+	width: 300px;
+	float: right;
+	display: block;
+	text-align: right;
+	font-size: 1.1em;
+}
+div#footer div span{
+	font-weight: bold;
+	display: block;
+	color: #175283;
+	font-size: 1.3em;
+}
+
+/* Group End */
+
+/* Group Modal Window */
+
+div#modalContainer{
+	width: 100%;
+	height: 100%;
+	background: black;
+	opacity:0.7;
+	filter:alpha(opacity=70);
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+}
+
+div.window{
+	position: absolute;
+	width: 50%;
+	min-width: 640px;
+	border: 2px solid #ccc;
+	top: 25%;
+	left: 25%;
+	display: block;
+	background-color: #fff;
+	box-shadow: 4px 4px 4px #000;
+	z-index: 1001;
+	border-radius: 10px;
+	/*font-size: 68%;*/
+}
+/*specific Window Sizes*/
+#deleteSessionOppData.window, #copySim.window, #newSim.window, #deleteSim.window, #alterSimTest.window{
+	width: 35%;
+	min-width: 35%;
+	left: 33%;
+}
+
+.window h2.windowTitle{
+	border-bottom: 1px solid #ccc;
+    font-size: 1.4em;
+    padding: 0.25em;
+	background: #eee;
+	border-radius: 10px 10px 0 0;
+}
+div.windowBody{
+	padding: 0.5em 0.5em 3em 0.5em;
+	border-radius: 0 0 10px 10px;
+	overflow: auto;
+	max-height: 500px;
+}
+.windowBody form{
+	clear: both;
+	font-size: 0.9em;
+	margin: 0.5em 0;
+}
+.windowBody fieldset{
+	border: 1px solid black;
+	padding: 0.5em;
+	margin: 0em 1em 1em 0;
+}
+.windowBody fieldset.left{
+	float: left;
+	width: 40%;
+}
+.windowBody fieldset.right{
+	float: right;
+	width: 40%;
+}
+.windowBody legend{
+	padding: 0 0.5em;
+}
+.windowBody form input, .windowBody form label, .windowBody form select{
+	display: block;
+	float: left;
+	margin: 0.5em 1em 0.5em 0;
+}
+.windowBody form label{
+	width: 10em;
+	line-height: 2em;
+}
+fieldset.left label, fieldset.right label{
+	width: 5em;
+}
+fieldset.left label.wide, fieldset.right label.wide{
+	width: auto;
+}
+
+.windowBody a.button{
+	padding: 0.2em 0.5em;
+	border: 1px solid #000;
+	color: #000;
+	text-decoration: none;
+	margin: 0.2em 0.5em 0.2em 0;
+	color: #fff;
+	text-decoration: none;
+	background: #175283;
+	display: block;
+	float: left;
+}
+
+.windowBody a.button:hover{
+	background: #fff;
+	border-color: #000;
+	color: #175283;
+}
+
+.windowBody a.button.no{
+	background: #a00000;
+}
+.windowBody a.button.no:hover{
+	color: #a00000;
+	background: #fff;
+}
+.windowBody a.button span{
+	background-image: url("../images/sprites.gif");
+	background-repeat: none;
+	height: 22px;
+	padding-right: 7px;
+	width: 14px;
+	display:inline-block;	
+	vertical-align: middle;
+}
+.windowBody a.button.plus{ background: #136d1d;}
+.windowBody a.button.plus:hover {background: #fff; color: #136d1d;}
+.windowBody a.button.minus{ background: #A00000;}
+.windowBody a.button.minus:hover{background: #fff; color: #A00000;}
+.windowBody a.button.plus span{background-position: -194px 0px;}
+.windowBody a.button.plus:hover span{ background-position: -194px -77px;}
+.windowBody a.button.minus span{background-position: -219px 0;}
+.windowBody a.button.minus:hover span{background-position: -219px -97px;}
+
+.windowBody form span.clear{
+	border-top: 1px solid #ccc;
+}
+h3{
+	font-size: 1.3em;
+    padding: 0.25em;
+	
+}
+/* Group End */
+
+
+/* Group: Old Code */
+/*#header, #navigation, #main, #footer{
+	overflow: hidden;
+	position: relative;
+	display: block;
+}
+
+#header {
+}
+#appBar{
+	background-color: #175283;
+    color: #FFFFFF;
+    height: 22px;
+    padding-right: 5px;
+	border-bottom: 1px solid #fff;
+	padding-top: 3px;
+}
+#appBar a.button{
+	background: #DBEDFB;
+	border: 1px solid #3984b4;
+	color: black;
+	text-decoration: none;
+	text-transform: uppercase;
+	float: right;
+	font-size: 1em;
+	padding: 1px 0.5em 1px 0.5em;
+	border-radius: 6px 0px 6px 0px;
+}
+#banner{
+	min-height: 64px;
+	min-width: 364px;
+	background: url( ../images/logo_default_big.gif) no-repeat top left #73a6d3;
+}
+#banner .title h1{
+	position: absolute;
+	left: -9999px;
+}
+
+#systemBar{
+	background: #B7DA8C;
+	border-top: 1px solid #04A033;
+	border-bottom: 1px solid #04A033;
+	height: 2.5em;
+}
+#systemBar .system{
+	float: right;
+	font-weight: bold;
+	font-size: 1.4em;
+    line-height: 1.4em;
+    padding: 0.2em 0.5em;
+	border-left: 1px solid #04A033;
+	
+}*/
+/* Group End */

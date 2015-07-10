@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
+
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:root-context.xml</param-value>
+	</context-param>
+
+	<!-- Creates the Spring Container shared by all Servlets and Filters -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<!-- End -->
+
+	<!-- Processes requests from /WebSimXHR/* -->
+	<servlet>
+		<servlet-name>webSimXHRServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring/appServlet/servlet-context.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>webSimXHRServlet</servlet-name>
+		<url-pattern>/Setup/Services/WebSimXHR.ashx/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webSimXHRServlet</servlet-name>
+		<url-pattern>/setup/Services/WebSimXHR.ashx/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webSimXHRServlet</servlet-name>
+		<url-pattern>/Manage/Services/WebSimXHR.ashx/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webSimXHRServlet</servlet-name>
+		<url-pattern>/Load/Services/WebSimXHR.ashx/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webSimXHRServlet</servlet-name>
+		<url-pattern>/LoadConfigs/Services/WebSimXHR.ashx/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>webSimXHRServlet</servlet-name>
+		<url-pattern>/Reports/Services/WebSimXHR.ashx/*</url-pattern>
+	</servlet-mapping>
+	<!-- End -->
+
+	<!-- JSF Mapping -->
+	<servlet>
+		<servlet-name>facesServlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>*.jsf</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	<!-- Let *.aspx to be handled by JSF-->
+	<servlet-mapping>
+		<servlet-name>facesServlet</servlet-name>
+		<url-pattern>*.aspx</url-pattern>
+	</servlet-mapping>
+	<!-- End of JSF Mapping -->
+
+	<!-- Welcome page -->
+	<welcome-file-list>
+		<welcome-file>Login.xhtml</welcome-file>
+	</welcome-file-list>
+	<!-- End of Welcome page -->
+
+	<context-param>
+		<description>State saving method: 'client' or 'server' (=default). See JSF Specification 2.5.2</description>
+		<param-name>javax.faces.STATE_SAVING_METHOD</param-name>
+		<param-value>client</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>resources.application</param-value>
+	</context-param>
+
+	<!-- Change to "Production" when ready to deploy -->
+	<context-param>
+		<description>Tell the runtime where we are in the project development lifecycle. (Valid values are: Development, UnitTest, SystemTest, or Production.) The runtime will display helpful hints to correct common mistakes when the value is Development.</description>
+		<param-name>javax.faces.PROJECT_STAGE</param-name>
+		<param-value>Development</param-value>
+	</context-param>
+
+	<context-param>
+		<param-name>javax.faces.DEFAULT_SUFFIX</param-name>
+		<param-value>.xhtml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>javax.faces.FACELETS_LIBRARIES</param-name>
+		<param-value>/WEB-INF/classes/taglib.xml;</param-value>
+	</context-param>
+
+	<listener>
+		<description>sessionListener</description>
+		<listener-class>AIR.Common.Web.Session.SessionListener</listener-class>
+	</listener>
+
+	<!-- WebSim Web Application Entry -->
+	<listener>
+		<description>contextTrackerListener</description>
+		<listener-class>tds.websim.web.application.WebSimApplication</listener-class>
+	</listener>
+	<!-- End of WebSim Web Application Entry -->
+
+	<filter>
+		<filter-name>contextInitializerFilter</filter-name>
+		<filter-class>AIR.Common.Web.Session.HttpContextInitializerFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>contextInitializerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Filter for logging individual requests: for development only -->
+	<filter>
+		<filter-name>requestInitializerFilter</filter-name>
+		<filter-class>AIR.Common.Web.Session.HttpRequestLoggerInitializerFilter</filter-class>
+		<init-param>
+			<param-name>prefix</param-name>
+			<param-value>websim</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>requestInitializerFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<welcome-file-list>
+		<welcome-file>Login.xhtml</welcome-file>
+	</welcome-file-list>
+</web-app>

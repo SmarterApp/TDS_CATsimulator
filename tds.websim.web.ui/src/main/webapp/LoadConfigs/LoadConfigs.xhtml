@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+		<!-- Refresh Loading Modal -->
+		<div id="loadConfigLoadingPanel"
+			style="display: none; background-color: #ffffff; border-style: solid; border-width: medium; border-color: #000000; width: 300px">
+			<div class="yui3-widget-bd">
+				<h3>Loading Test Package...</h3>
+				<img src="../Shared/images/interstitial_loading.gif"
+					alt="loading Test Package..." />
+			</div>
+		</div>
+
+		<div id="simApp">
+			<div id="clientSelect">
+				<label>Client:</label>
+				<h:form prependId="false">
+					<h:selectOneMenu value="#{loadConfigs.selectedClient}"
+						valueChangeListener="#{loadConfigs.onClientValueChanged}"
+						onchange="submit()" title="Select a client..." required="false"
+						id="ctl00_MainContent_ddlClientPicker"
+						name="ctl00_MainContent_ddlClientPicker">
+						<f:selectItems value="#{loadConfigs.clientList}" />
+					</h:selectOneMenu>
+				</h:form>
+			</div>
+			<div id="navigation">
+				<ul class="leftNav">
+					<li><h:link outcome="/Setup/Session_Dashboard" id="navSetup">Setup Simulation Sessions</h:link></li>
+					<li><h:link outcome="/Manage/Manage_Sessions" id="navManage">Manage Simulation Sessions</h:link></li>
+					<li><h:link outcome="/LoadConfigs/LoadConfigs" class="current"
+							id="navLoadConfigs">Load Test Packages</h:link></li>
+				</ul>
+				<ul class="rightNav">
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main">
+				<div id="window" class="main-window">
+					<div id="loadConfig">					
+						<br/> 								
+						<form method="POST" action="Services/WebSimXHR.ashx/LoadTestPackage" enctype="multipart/form-data">
+					    	<p> Test Package: <br/>
+								<input type="file" accept=".xml" id="testPackage" name="testPackage" style="background-color: #ccc; color:#f00">
+								</input>
+							</p>
+							<div>
+								<input type="submit" value="Load"> </input>	
+							</div>
+					    </form>									
+						<br /> 
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<h:inputHidden id="ctl00_MainContent_hfcn" name="ctl00$MainContent$hfcn" value="#{loadConfigs.selectedClient}" />
+		<script type="text/javascript" src="LoadConfigs.js"></script>
+	</ui:define>
+</ui:composition>

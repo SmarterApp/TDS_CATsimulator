@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+		<!-- Remove the inline "display:none" to make the modal area show -->
+		<div id="modalContainer" style="display: none;"></div>
+
+		<!-- Loading Modal -->
+		<div id="divLoadingPanel" style="display: none; background-color: #ffffff; border-style: solid; border-width: medium; border-color: #000000; width: 300px;">
+			<div class="yui3-widget-bd">
+				<h3>Please Wait...</h3>
+				<img src="../Shared/images/interstitial_loading.gif" alt="Please Wait..." />
+			</div>
+		</div>
+
+		<!-- Modify Test Item Properties Window -->
+		<div class="window testItemProp" style="display: none;" id="testItemProp">
+			<h2 class="windowTitle">
+				<span id="btnShowItemPropsText">[Alter Item Properties]</span><a href="#" id="btnShowItemProps" style="display: none">[Alter Item Properties]</a><span id="btnShowGroupPropsText"
+					style="display: none">[Alter Group Properties]</span><a href="#" id="btnShowGroupProps">[Alter Group Properties]</a> <a id="btnCloseTestItemProp" href="#" class="button no" style="float: right">
+					Close</a>
+			</h2>
+			<div id="itemProp">
+				<div class="windowBody">
+					<p>
+						Test ID: <span id="lblItemTestID"></span>
+					</p>
+					<form>
+						<label for="editItem-key">Segment Key: </label> <select name="editItem-key" id="editItem-key">
+							<option selected="selected">(Hawaii)HSA_OP-Reading-10-Fall-2011-2012</option>
+						</select> <br class="clear" /> <label for="editItem-strand">Strand:</label> <select name="editItem-strand" id="editItem-strand">
+							<option selected="selected">(Hawaii)HSA-Science-4-PES</option>
+						</select> <br class="clear" /> <label for="editItem-groupID">Group ID:</label> <select name="editItem-groupID" id="editItem-groupID">
+							<option selected="selected">I-71-10038</option>
+						</select> <br class="clear" /> <label for="editItem-search">Search by Item Key:</label> <input id="editItem-search" type="text" size="20" name="editItem-search" maxlength="20" /> <a class="button"
+							id="btnItemSearch" href="#" style="line-height: 1.5em;">Search</a>
+					</form>
+					<p class="buttonRow right small">
+						<a class="button edit" href="#" id="btnEditEditItem">Edit</a><a class="button save" href="#" id="btnSaveEditItem" style="display: none">Save</a>&#160;<a class="button cancel" href="#"
+							id="btnCancelEditItem" style="display: none">Cancel</a>
+					</p>
+					<table id="editItem-table" class="simTable">
+						<thead>
+							<tr>
+								<th>Segment Key</th>
+								<th>Strand</th>
+								<th>Group ID</th>
+								<th>Item Key</th>
+								<th>IsActive</th>
+								<th>Is Required
+									<div id="dvIsRequiredAll" style="display: none">
+										<input type="checkbox" id="cbIsRequiredAll" /><label for="cbIsRequiredAll" style="font-size: .8em; font-weight: normal; vertical-align: text-top">Toggle All</label>
+									</div>
+								</th>
+								<th>IsFieldTest</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>MCA III-S1-Mathematics-3</td>
+								<td>HSA-Science-4-PES</td>
+								<td>I-71-10038</td>
+								<td>157-1003</td>
+								<td>True</td>
+								<td>True</td>
+								<td>False</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div id="groupProp" style="display: none;">
+				<div class="windowBody">
+					<p>
+						Test ID: <span id="lblGroupTestID"></span>
+					</p>
+					<form>
+						<label for="editGroup-key">Segment Key: </label> <select name="editGroup-key" id="editGroup-key">
+							<option selected="selected">G-71-151</option>
+							<option selected="selected">G-71-152</option>
+							<option selected="selected">G-71-153</option>
+							<option selected="selected">G-71-17</option>
+						</select> <br /> <label for="editGroup-search">Search by Item Key:</label> <input id="editGroup-search" type="text" size="20" name="editGroup-search" maxlength="20" /> <a class="button"
+							id="btnGroupSearch" href="#" style="line-height: 1.5em;">Search</a>
+					</form>
+					<p class="buttonRow right small">
+						<a class="button edit" href="#" id="btnEditEditGroup">Edit</a><a class="button save" href="#" id="btnSaveEditGroup" style="display: none">Save</a>&#160;<a class="button cancel" href="#"
+							id="btnCancelEditGroup" style="display: none">Cancel</a>
+					</p>
+					<table id="editGroup-table" class="simTable">
+						<thead>
+							<tr>
+								<th>Segment Key</th>
+								<th>GroupID</th>
+								<th>Max Items</th>
+								<th>ActiveItems</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>MCA III-S1-Mathematics-3</td>
+								<td>G-71-151</td>
+								<td>10</td>
+								<td>10</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<!-- Modify Item Selection Params -->
+		<div class="window itemSelectionParams" style="display: none;"
+			id="itemSelectionParams">
+			<h2 class="windowTitle">
+				<a id="btnCloseEditParams" href="#" class="button no"
+					style="float: right"> Close</a>
+			</h2>
+			<div id="editParameters">
+				<div class="windowBody">
+					<p>
+						Test ID: <span id="lblTestID"></span>
+					</p>
+					<p class="buttonRow right small">
+						<a class="button edit" href="#" id="btnEditParam">Edit</a> <a
+							class="button save" href="#" id="btnSaveParam"
+							style="display: none">Save</a>&#160; <a class="button cancel"
+							href="#" id="btnCancelEditParam" style="display: none">Cancel</a>
+					</p>
+					<table id="editParamTable" class="simTable">
+						<thead>
+							<tr>
+								<th>Segment Key</th>						
+								<th>BP Element ID</th>
+								<th>Parameter Name</th>
+								<th>Parameter Value</th>
+								<th>Label</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Segment Key</td>
+								<td>SBAC-1</td>
+								<td>adaptivecut</td>
+								<td>0</td>
+								<td>adaptive cut point</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- End modal windows -->
+
+		<!-- Start main body code -->
+		<div id="simApp">
+			<div id="clientSelect">
+				<label>Client:</label> <select id="ddlClientPicker" disabled="disabled">
+				</select>
+
+			</div>
+			<div id="navigation">
+				<ul class="leftNav">
+					<li><a href="Session_Dashboard.xhtml" class="current" id="navSetup">Setup Simulation Sessions</a></li>
+					<li><a href="../Manage/Manage_Sessions.xhtml" id="navManage">Manage Simulation Sessions</a></li>
+					<li><a href="../LoadConfigs/LoadConfigs.xhtml" id="navLoadConfigs">Load Test Packages</a></li>
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main">
+				<div id="window" class="main-window">
+					<!-- Manage Test Segment Blueprint View -->
+					<div id="segmentBlueprint">
+						<p class="breadcrumbs">
+							<a href="Session_Dashboard.xhtml">Setup Simulation Session</a>  <a href="Session_Edit.xhtml">Edit Session</a>  Edit Session Blueprint
+						</p>
+						<h2>
+							Manage Test Segment Blueprint for SessionID:
+							<h:outputLabel value="#{sessionBlueprint.hfsid}" />
+						</h2>
+						<form>
+							<label for="blueprint-TestID">Select a Test:</label> <select id="ddlSelectTest" name="blueprint-TestID">
+								<option>MCA-Mathematics-3</option>
+								<option>MCA-Mathematics-4</option>
+							</select>
+						</form>
+						<div class="clear"></div>
+						<p class="buttonRow">
+							<a href="#" id="btnExportBlueprint" class="button">Export Blueprint</a>&#160;<a href="#" id="btnAlterItemSelectionParams" class="button">Alter Item Selection Parameters</a>&#160;<a href="#" id="btnAlterTestItemProps" class="button">Alter Test Item Properties</a>
+						</p>
+						<h3>List of Segments:</h3>
+						<p class="buttonRow right small">
+							<a class="button edit" href="#" id="btnEditBlueprintSeg">Edit</a><a class="button save" href="#" id="btnSaveBlueprintSeg" style="display: none">Save</a>&#160;<a class="button cancel" href="#"
+								id="btnCancelBlueprintSeg" style="display: none">Cancel</a>
+						</p>
+						<table id="tblSegBlueprint" class="simTable" style="display: none">
+							<thead>
+								<tr>
+									<th>SegmentID</th>
+									<th>SegPos</th>
+									<th>StartAbility</th>
+									<th>StartInfo</th>
+									<th>MinItems</th>
+									<th>MaxItems</th>
+									<th>FTStartPos</th>
+									<th>FTEndPos</th>
+									<th>FTMinItems</th>
+									<th>FTMaxItems</th>
+									<th>bpWeight</th>
+									<th>cset1Size</th>
+									<th>cset2InitRand</th>
+									<th>cset2Rand</th>
+									<th>loadconfig</th>
+									<th>updateconfig</th>
+									<th>itemWeight</th>
+									<th>abilityOffset</th>
+									<th>selectionAlgorithm</th>
+									<th>cset1Order</th>
+									<th>OP Active ItemCount</th>
+									<th>OP Active GroupCount</th>
+									<th>rcAbilityWeight</th>
+									<th>abilityWeight</th>
+									<th>precisionTargetNotMetWeight</th>
+									<th>precisionTargetMetWeight</th>
+									<th>precisionTarget</th>
+									<th>adaptiveCut</th>
+									<th>tooCloseSEs</th>
+									<th>terminationMinCount</th>
+									<th>terminationOverallInfo</th>
+									<th>terminationRCInfo</th>
+									<th>terminationTooClose</th>
+									<th>terminationFlagsAnd</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>MCA III-S1-Mathematics-3</td>
+									<td>1</td>
+									<td>-0.036999979889023</td>
+									<td>0.2</td>
+									<td>13</td>
+									<td>13</td>
+									<td>6</td>
+									<td>42</td>
+									<td>6</td>
+									<td>6</td>
+									<td>3</td>
+									<td>50</td>
+									<td>4</td>
+									<td>15</td>
+									<td>2320</td>
+									<td>2320</td>
+									<td>0</td>
+									<td>0</td>
+									<td>adaptive</td>
+									<td>ABILITY</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+						<br /> <br />
+						<h3>Filter by Strand and Affinity Group/Content Level:</h3>
+						<form>
+							<select id="blueprint-SegmentID" name="blueprint-SegmentID">
+								<option>MCA III-S1-Mathematics-3</option>
+								<option>MCA III-S1-Mathematics-3</option>
+								<option>MCA III-S1-Mathematics-3</option>
+								<option>MCA III-S1-Mathematics-3</option>
+							</select> <select id="blueprint-StrandID" name="blueprint-StrandID">
+								<option selected="selected">All Strands</option>
+								<option>A</option>
+								<option>B</option>
+								<option>C</option>
+							</select>
+						</form>
+						<div class="clear"></div>
+						<br /> <br />
+						<h3>List of Segment Strands:</h3>
+						<p class="buttonRow right small">
+							<a class="button edit" href="#" id="btnEditBlueprintSegStrand">Edit</a> <a class="button save" href="#" id="btnSaveBlueprintSegStrand" style="display: none">Save</a> <a class="button save"
+								href="#" id="btnConvertSaveBlueprintSegStrand" style="display: none">Save</a> &#160; <a class="button edit" href="#" id="btnConvertBlueprintSegStrand">Convert</a> <a class="button cancel"
+								href="#" id="btnCancelBlueprintSegStrand" style="display: none">Cancel</a> <a class="button cancel" href="#" id="btnConvertCancelBlueprintSegStrand" style="display: none">Cancel</a>
+						</p>
+						<table id="tblSegStrand" class="simTable" style="display: none">
+							<thead>
+								<tr>
+									<th>SegmentID</th>
+									<th>Strand</th>
+									<th>StartAbility</th>
+									<th>StartInfo</th>
+									<th>MinItems</th>
+									<th>MaxItems</th>
+									<th>bpWeight</th>
+									<th>isStrictMax</th>
+									<th>adaptiveCut</th>
+									<th>Scalar</th>
+									<th>OP Active ItemCount</th>
+									<th>abilityWeight</th>
+									<th>precisionTargetNotMetWeight</th>
+									<th>precisionTargetMetWeight</th>
+									<th>precisionTarget</th>
+									<th>isReportingCategory</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>MCA III-S1-Mathematics-3</td>
+									<td>1</td>
+									<td>-0.036999979889023</td>
+									<td>0.2</td>
+									<td>13</td>
+									<td>13</td>
+									<td>3</td>
+									<td>50</td>
+									<td>4</td>
+									<td>15</td>
+									<td>0</td>
+									<td>1</td>
+									<td>1</td>
+									<td>1</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+						<br /> <br />
+						<h3>List of Segment Content Levels:</h3>
+						<p class="buttonRow right small">
+							<a class="button edit" href="#" id="btnEditBlueprintSegContentLevel">Edit</a> <a class="button save" href="#" id="btnSaveBlueprintSegContentLevel" style="display: none">Save</a> <a
+								class="button save" href="#" id="btnConvertSaveBlueprintSegContentLevel" style="display: none">Save</a> &#160; <a class="button edit" href="#" id="btnConvertBlueprintSegContentLevel">Convert</a>
+							<a class="button cancel" href="#" id="btnCancelBlueprintSegContentLevel" style="display: none">Cancel</a> <a class="button cancel" href="#" id="btnConvertCancelBlueprintSegContentLevel"
+								style="display: none">Cancel</a>
+						</p>
+						<table id="tblSegContentLevel" class="simTable" style="display: none">
+							<thead>
+								<tr>
+									<th>SegmentID</th>
+									<th>ContentLevelID</th>
+									<th>MinItems</th>
+									<th>MaxItems</th>
+									<th>bpWeight</th>
+									<th>isStrictMax</th>
+									<th>OP Active ItemCount</th>
+									<th>isReportingCategory</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>MCA III-S1-Mathematics-3</td>
+									<td>1</td>
+									<td>-0.036999979889023</td>
+									<td>0.2</td>
+									<td>13</td>
+									<td>13</td>
+									<td>0</td>
+									<td>0</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<h:inputHidden id="ctl00_MainContent_hfsk" value="#{sessionBlueprint.hfsk}" />
+		<h:inputHidden id="ctl00_MainContent_hftk" value="#{sessionBlueprint.hftk}" />
+		<h:inputHidden id="ctl00_MainContent_hfcn" value="#{sessionBlueprint.hfcn}" />
+		<h:inputHidden id="ctl00_MainContent_hfsid" value="#{sessionBlueprint.hfsid}" />
+
+		<script type="text/javascript" src="Session_Blueprint.js"></script>
+
+	</ui:define>
+</ui:composition>

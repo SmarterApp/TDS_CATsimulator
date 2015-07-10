@@ -1,0 +1,281 @@
+@charset "UTF-8";
+/* CSS Document */
+/* CSS File for AIR Web simulator */
+
+/* Group: Brought Over from Login for the header */
+
+.clear {
+    clear: both;
+    display: block;
+}
+.header {
+    border-bottom: 1px solid #04A033;
+}
+body {
+    font-family: Arial,Helvetica,sans-serif;
+    position: relative;
+}
+.wrapper {
+    font-size: 68%;
+}
+.topBar {
+    background-color: #175283;
+    color: #FFFFFF;
+    height: 25px;
+    padding-right: 5px;
+}
+
+.smallButtons {
+}
+.smallButtons a {
+    background-color: #DBEDFB;
+    background-image: url("../images/btnBlueTop.gif");
+    background-position: left top;
+    background-repeat: no-repeat;
+    color: #000000 !important;
+    display: block;
+    float: right;
+    line-height: 1em;
+    margin-left: 0.3em;
+    margin-right: 0.3em;
+    margin-top: 4px;
+    padding: 1px 5px;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.smallButtons a:hover {
+    background-color: #04A033;
+    color: #FFFFFF !important;
+}
+.smallButtons a span {
+    background-image: url("../images/btnBlueBottom.gif");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    display: block;
+    margin: -1px -5px;
+    padding: 2px 5px;
+}
+.smallButtons .disabled, .smallButtons .disabled:hover {
+    background-color: #245C94;
+    border-color: #7AADE2;
+    color: #7AADE2;
+    cursor: default;
+}
+.logos {
+    background-color: #76A9D6;
+    background-image: url("../images/bigMountain.gif");
+    background-position: right bottom;
+    background-repeat: no-repeat;
+    border-top: 1px solid #FFFFFF;
+}
+.brand1 {
+    background-image: url("../images/logo_default_big.gif");
+    background-position: left bottom;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+.brand1 h2 {
+    color: #FFFFFF;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding-left: 325px;
+    padding-top: 50px;
+}
+.brand1 h3 {
+    padding-left: 325px;
+}
+.brand2 {
+    background-color: #B7DA8C;
+    background-position: left top;
+    background-repeat: no-repeat;
+    border-top: 1px solid #04A033;
+    height: 2.5em;
+}
+.brand2 h3 {
+    background-image: url("../images/shadowboxes/greenGradient.gif");
+    background-position: center bottom;
+    background-repeat: repeat-x;
+    border-left: 1px solid #04A033;
+    display: block;
+    float: right;
+    font-size: 1.4em;
+    line-height: 1.4em;
+    padding: 0.2em 0.5em;
+}
+.footer {
+    color: #999999;
+    padding-right: 2em;
+    padding-top: 1em;
+    text-align: right;
+}
+.footer span, .footer a {
+    color: #9DBF73;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+}
+.contentWrapper {
+    margin: 50px;
+    text-align: center;
+}
+/* Group End */
+
+/* Group: Regions and Containers */
+
+div#simApp{
+	width: 70em;
+	margin: 1.5em auto 0;
+}
+
+/* End Group */
+
+/* Group: Client Selector */
+
+div#clientSelect{
+	border: 1px solid #175283;
+	background-color: #eee;
+	border-radius: 10px 10px 0 0;
+	border-bottom: none;
+	padding: 5px 10px 0px 5px;
+	float: left;
+	color: #000;
+	margin-bottom: -2px;
+	z-index: 5;
+}
+
+#clientSelect label{
+	font-size: 2em;
+	font-weight: bold;
+}
+
+#clientSelect select{
+	font-size: 1.4em;
+	margin-left: 1em;
+}
+#clientSelect select option{
+	
+}
+/* Group End */
+
+/* Group: Tab Navigation & New Session Button */
+
+div#navigation{
+	clear: left;
+	border: 1px solid #175283;
+	background-color: #eee;
+	padding: 5px 10px 7px 5px;
+	border-radius: 0 10px 0 0;
+	overflow: hidden;
+	border-bottom: none;
+}
+
+ul.leftNav{
+	float: left;
+	width: 75%;
+	list-style-type: none;
+	margin-top: 1em;
+}
+ul.leftNav li{
+	float: left;
+	padding-right: 1em;
+}
+
+ul.leftNav li a{
+	color: #666;
+	font-weight: bold;
+	text-decoration: none;
+}
+ul.leftNav li a{
+	background: #999;
+	border: 1px solid #000;
+	color: #000;
+	border-radius: 6px 6px 0 0;
+	border-bottom: none;
+	padding: 0.7em 0.3em 0.7em 0.3em;
+}
+ul.leftNav li a.current{
+	color: #000;
+	background: #fff;
+	margin-bottom: -3px;
+}
+ul.leftNav li a:hover{
+	border-bottom: none;
+	background-color: #fff;
+}
+
+.rightNav{
+	float: left;
+	width: 25%;
+	text-align: right;
+}
+/* Group End */
+
+/* Group: Main and Table */
+
+div#main{
+	border-left: 1px solid #175283;
+	border-right: 1px solid #175283;
+	border-bottom: 1px solid #175283;
+	background-color: #fff;
+	padding: 5px 10px 7px 5px;
+	border-radius: 0 0 10px 10px;
+}
+
+
+
+/* Group End */
+
+/* Group: Old Code */
+/*#header, #navigation, #main, #footer{
+	overflow: hidden;
+	position: relative;
+	display: block;
+}
+
+#header {
+}
+#appBar{
+	background-color: #175283;
+    color: #FFFFFF;
+    height: 22px;
+    padding-right: 5px;
+	border-bottom: 1px solid #fff;
+	padding-top: 3px;
+}
+#appBar a.button{
+	background: #DBEDFB;
+	border: 1px solid #3984b4;
+	color: black;
+	text-decoration: none;
+	text-transform: uppercase;
+	float: right;
+	font-size: 1em;
+	padding: 1px 0.5em 1px 0.5em;
+	border-radius: 6px 0px 6px 0px;
+}
+#banner{
+	min-height: 64px;
+	min-width: 364px;
+	background: url( ../images/logo_default_big.gif) no-repeat top left #73a6d3;
+}
+#banner .title h1{
+	position: absolute;
+	left: -9999px;
+}
+
+#systemBar{
+	background: #B7DA8C;
+	border-top: 1px solid #04A033;
+	border-bottom: 1px solid #04A033;
+	height: 2.5em;
+}
+#systemBar .system{
+	float: right;
+	font-weight: bold;
+	font-size: 1.4em;
+    line-height: 1.4em;
+    padding: 0.2em 0.5em;
+	border-left: 1px solid #04A033;
+	
+}*/
+/* Group End */

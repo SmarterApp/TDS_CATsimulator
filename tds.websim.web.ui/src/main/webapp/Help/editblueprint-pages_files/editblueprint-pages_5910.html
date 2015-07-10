@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<!-- Created with Inspiration® - http://www.inspiration.com -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta name="GENERATOR" content="Inspiration 9.0.3">
+<meta name="ORIGINATOR" content="Inspiration 9.0.3">
+<TITLE>Adaptive Item Selection Algorithm</TITLE>
+</HEAD>
+<BODY BGCOLOR="#FFFFFF">
+<A NAME="TOP"></A>
+<ol TYPE=I START=7>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Adaptive Item Selection Algorithm</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Adaptive Item selection goes through several stages.</FONT>
+<ol TYPE=A>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Build custom itempool</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Based on various predetermined accommodations such as language of test, LEP flag, etc., select which items in the test item pool may be selected for this student.</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Process student responses on test so far</b></FONT>
+<ol TYPE=1>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Compute ability estimate (theta) on overall and each strand-level give the initial ability (either historical or default)</b></FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>For each strand, content level and affinity group, count the number of items administered.</b></FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Permanently remove each itemgroup administered from the student's itempool.</b></FONT>
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Generate candidate set 1 (cset1) based on blueprint satisfaction</b></FONT>
+<ol TYPE=1>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Prior test item group removal</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">For each test previously given, tentatively remove itemgroups from the custom itempool.Each test is processed in chronological order (according to test start date). Each item group removed is flagged with the most recent date administered. </FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Preemptive strict max pruning</b></FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Prune strict maxes</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">For every strand, content level, or affinity group that is marked as a 'strict max' and where the number of items administered on the test so far is &gt;= the maximum items, flag the itemgroup as 'pruned'. </FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Unprune shortfalls</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">For every content level with pruned items where there are not enough items in the pool to meet the minimum, return all pruned items on that content level to the pool.</FONT>
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Item recycling</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Starting with the least recent previous test chronologically, for any strand, content level, or affinity group that cannot meet its minimum requirement, return to the pool all items on that content level that have been removed. (Note, itemgroups administered on the current test are never returned to the pool.)</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Compute blueprint satisfaction metric</b></FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Raw metric</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">For each content level represented in an item group, its raw metric is </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">sum(bpweight[i] * metric[i]) / N  where</FONT>
+<ol TYPE=1>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Panic weight</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">The panic weight is a sliding weight that increases from 1 to test length from the start of the test to the end. It is applied only to content levels that have not reached the minimum number of items.</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>bpweight </b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">is the weight on the content level provided by the blueprint. </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Content levels with bpweight = 0 provide no contribution to the metric, either positive, negative or neutral. They are simply not counted.</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>N </b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">is the number of content levels represented in the item group's set of items that do NOT have a bpweight of 0</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Raw Metric </b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Let K be the number of items administered on the content level so far, </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">P be the panic weight,</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">min be the content level minimum items required, </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">max bet the content level maximum items allowed  (strict max does not figure into this formula)</FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>K &lt; min</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">metric = P * (2 - K/min)</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">(Note that 2-k/min ranges from 1 to 2 in rational steps equal to the value of min)</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>K &gt;= max</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">metric = max - K</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Note that max-K &lt;= 0</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>min &lt; K &lt; max</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">metric = 1 - (K - min) / (max - min)</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Metric ranges from 0 to 1 in rataional steps from min to max</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Also note that divide by zero is prevented by min &lt; max. That is covered by the first 2 conditions.</FONT>
+</ol> 
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Normalized metric</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Each itemgroup's final metric is a translated unit-normalization of its raw metric. A pure unit-normalized metric would be in the range [0, 1]. The translated version adds 1.0 to the unit-normalization. Normalization is required to place blueprint satisfaction and ability match on the same scale. The translation (of both) is needed to accommodate the segment-level blueprint weight. (Relative ability weight is fixed at 1.0.)</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Let M be a given itemgroup's raw blueprint metric, A be the smallest raw metric of all item groups, B be the largest raw metric or all itemgroups</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Normalize each item group's final blueprint metric as</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">bpmetric = </FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">2, if A == B</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">1 + (M - A) / (B - A), otherwise</FONT><BR>
+<BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Note that if M = B, bpmetric = 2. If M = A, bpmetric = 1. Everything else is a real number between 1 and 2.</FONT>
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Tie breakers</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Itemgroups often clump together in sets of common blueprint aggregate metrics. If cset1size falls exactly on the border of 2 distinct metrics, then this doesn't matter. However, it can often be the case that cset1size falls in the middle of a clump of itemgroups sharing the same metric. It is then arbitrary as to which proceed on and which are left behind. If is useful to have some measure of  control over this process, hence the cset1Order parameter which is used to break such ties.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">When 2 itemgroups have identical metrics, the tie between them is broken according to the cset1Order as follows</FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>DISTRIBUTION, RANDOM</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">A random number breaks the tie. Originally DISTRIBUTION used counts of items administered on other tests, but that became impractical when the CSET1 algorithm moved out of the database.</FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">(Each itemgroup is assigned a random number to add to its metric in the event of a tie. This may still result in a tie, placing the two itemgroups in adjacent order in cset1. If they straddle the cset1size boundary, one of them will be left behind.)</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>ABILITY</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">The student overall theta estimate compared to the average item 'b' parameter in the group is used to break the tie. (this is a rudimentary comparison and is not used in the ability match algorithm below)</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>ALL</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Since all items at or greater than the itemgroup with the smallest metric are included in cset1, ties are irrelevant.</FONT>
+</ol> 
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Compute ability 'match' on each item in cset1</b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">Those formulas are beyond the scope of this document. Suffice to say that, similar to the blueprint satisfaction metric, each item receives an ability metric and each item group derives its raw ability metric from the average item metric. These are then normalized in identical fashion to the normalization process described above.</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Create combined metric </b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">for each itemgroup as bpweight * normalized bpmetric + normalized ability metric</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Randomly select </b></FONT><BR>
+
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman">from the top item group by combined metric according to cset1Random (or cset1InitRandom as the case may be).</FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Prune selected item group</b></FONT>
+<ol TYPE=1>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Set item-level metric = itemweight * normalized bpmetric + normalized ability metric</b></FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Order items in the group by the item-level metric</b></FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Prune all items in the group which would cause a strict max to be exceeded</b></FONT>
+<ol TYPE=a>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>starting with the lowest item-level metric</b></FONT>
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Exempt items flagged as required (isRequired = true)</b></FONT>
+</ol> 
+
+<LI>  
+<FONT SIZE="3" COLOR="#000000" FACE="Times New Roman"><b>Leave at least one item in the group</b></FONT>
+</ol> 
+</ol> 
+</ol> 
+<center><A HREF="../editblueprint-pages.html#TOP">Back</A></center>
+
+
+
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+<BR><BR><BR><BR><BR>
+</BODY>
+</HTML>

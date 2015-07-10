@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+		<!-- Begin Modals -->
+
+		<!-- Remove the inline "display:none" to make the modal area show -->
+		<div id="modalContainer" style="display: none;"></div>
+
+		<!-- Some of these modals should be consolidated -->
+		<!-- Simulation Loading Modal -->
+		<div id="simLoadingPanel" style="display: none; background-color: #ffffff; border-style: solid; border-width: medium; border-color: #000000; width: 300px">
+			<div class="yui3-widget-bd">
+				<h3>Please Wait...</h3>
+				<img src="../Shared/images/interstitial_loading.gif" alt="Please Wait..." />
+			</div>
+		</div>
+
+		<!-- Delete Simulation Window -->
+		<div class="window deleteSim" style="display: none;" id="deleteSessionOppData">
+			<h2 class="windowTitle">Alert</h2>
+			<div class="windowBody">
+				<p>Are you Sure you want to delete the session opportunity data?</p>
+				<a href="#" id="delete-opp-submit" class="button"> Yes</a> <a id="delete-opp-cancel" class="button no" href="#">No</a>
+
+			</div>
+		</div>
+
+		<!-- Simulation Error Modal -->
+		<div class="window simulationError" style="display: none;" id="simulationError">
+			<h2 class="windowTitle">
+				Simulation Errors <a href="#" id="btnSimErrorClose" class="button no" style="float: right">Close</a>
+			</h2>
+			<div class="windowBody">
+				<h3>List of Simulation Errors</h3>
+				<table id="tblSimError" class="simTable">
+					<thead>
+						<tr>
+							<th>Proc Name</th>
+							<th>Num Errors</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>58</td>
+							<td>58</td>
+						</tr>
+					</tbody>
+				</table>
+				<br class="clear" />
+			</div>
+		</div>
+		<!-- End Modals -->
+
+		<!-- Start main body code -->
+		<div id="simApp">
+			<div id="clientSelect">
+				<label>Client:</label>
+				<h:form prependId="false">
+					<h:selectOneMenu value="#{manageSessions.selectedClient}" valueChangeListener="#{manageSessions.onClientValueChanged}" onchange="submit()" title="Select a client..." required="false"
+						id="ctl00_MainContent_ddlClientPicker" name="ctl00_MainContent_ddlClientPicker">
+						<f:selectItems value="#{manageSessions.clientList}" />
+					</h:selectOneMenu>
+				</h:form>
+			</div>
+			<div id="navigation">
+				<ul class="leftNav">
+					<li><a href="../Setup/Session_Dashboard.aspx">Setup Simulation Session</a></li>
+					<li><a href="Manage_Sessions.aspx" class="current">Manage Simulation Session</a></li>
+					<li><a href="../LoadConfigs/LoadConfigs.aspx" id="navLoadConfigs">Load Test Packages</a></li>
+				</ul>
+				<ul class="rightNav">
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main">
+				<div id="window">
+					<!-- SIM MANAGE TABLE -->
+					<h3></h3>
+					<p class="buttonRow right small">
+						<a class="button" href="#" id="btnRefresh">Refresh</a>
+					</p>
+					<table id="simManage" class="simTable" style="display: none">
+						<thead>
+							<tr>
+								<th>Session ID</th>
+								<th>Description</th>
+								<th>Language</th>
+								<th>Date Created</th>
+								<th>Simulation Status</th>
+								<th>Simulation Start</th>
+								<th>Simulation End</th>
+								<th>&#160;</th>
+								<th>&#160;</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="oddRow">
+								<td>Albr-1</td>
+								<td>Test Simulation #1</td>
+								<td>ENU</td>
+								<td>03/07/2012</td>
+								<td>COMPLETED</td>
+								<td>1/1/2012 12:00:00</td>
+								<td>1/1/2012 3:00:00</td>
+								<td><a class="button run" href="#"><span>&#160;</span>Run Sim</a><a class="button cancel" href="#"><span>&#160;</span>Cancel Sim</a></td>
+								<td><a class="button delete" href="#"><span>&#160;</span>Clear Sim Data</a>&#160;
+									<a class="button view" href="#"><span>&#160;</span>View Details</a>&#160;
+									<a class="button publish" href="#"><span>&#160;</span>Publish to ITS</a>&#160;
+									<a class="button publishpackages" href="#"><span>&#160;</span>Publish Test Packages</a>
+								</td>
+							</tr>
+							<tr class="evenRow">
+								<td>Albr-2</td>
+								<td>Test Simulation #2</td>
+								<td>ESN</td>
+								<td>03/07/2012</td>
+								<td>RUNNING</td>
+								<td>1/1/2012 12:00:00</td>
+								<td>1/1/2012 3:00:00</td>
+								<td><a class="button run" href="#"><span>&#160;</span>Run Sim</a><a class="button cancel" href="#"><span>&#160;</span>Cancel Sim</a></td>
+								<td><a class="button delete" href="#"><span>&#160;</span>Clear Sim Data</a>&#160;
+									<a class="button view" href="#"><span>&#160;</span>View Details</a>&#160;
+									<a class="button publish" href="#"><span>&#160;</span>Publish to ITS</a>&#160;
+									<a class="button publishpackages" href="#"><span>&#160;</span>Publish Test Packages</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+			<h:inputHidden id="ctl00_MainContent_hfcn" name="ctl00$MainContent$hfcn" value="#{manageSessions.selectedClient}" />
+			<h:inputHidden id="ctl00_MainContent_hfId" name="ctl00$MainContent$hfId" value="#{manageSessions.currUser.id}" />
+		</div>
+
+		<script type="text/javascript" src="Manage_Sessions.js"></script>
+	</ui:define>
+</ui:composition>

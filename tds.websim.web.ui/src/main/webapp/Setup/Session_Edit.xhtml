@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+    
+    <!-- Remove the inline "display:none" to make the modal area show -->
+    <div id="modalContainer" style="display: none;">    
+    </div>
+
+    <!-- Loading Modal -->
+    <div id="divLoadingPanel" style="display:none; background-color:#ffffff; border-style:solid; border-width:medium; border-color:#000000; width:300px;">
+        <div class="yui3-widget-bd">
+            <h3>Please Wait...</h3>
+            <img src="#{request.contextPath}/Shared/images/interstitial_loading.gif" alt="Please Wait..." />
+        </div>
+    </div>
+
+    <!-- Add New Simulation Tests Window -->
+    <div class="window newSim" style="display:none;" id="addSimTests">
+    	
+    	<h2 class="windowTitle">Add Test(s) to Session</h2>
+        <div class="windowBody">
+            <form>
+        	    <fieldset class="left" >
+            	    <legend>Session Properties</legend>
+                    <label class="wide" for="simTests">Tests to Add:</label>
+                    <select id="add-test-simTests" name="simTests" multiple="multiple"></select>
+                </fieldset>
+                <fieldset class="right">
+            	    <legend>Filter By:</legend>
+                    <label for="simGrade">Grade:</label> 
+                    <select id="add-test-simGrade" name="simGrade">
+                	    <option>All</option>
+                        <option>6</option>
+                        <option>7</option>
+                    </select>
+                    <br class="clear" />
+                    <label for="simSubject">Subject:</label>
+                    <select id="add-test-simSubject" name="simSubject">
+                	    <option>All</option>
+                        <option>Mathematics</option>
+                        <option>Reading</option>
+                    </select>
+                </fieldset>
+                <br class="clear" />
+                <table id="add-test-table" class="simTable">
+                    <thead>
+                	    <tr>
+                    	    <th>Test ID</th>
+                            <th>Iterations</th>
+                            <th>Opportunities</th>
+                            <th>Mean Prof.</th>
+                            <th>St. Dev. Prof.</th>
+                            <th>Strand Correlation</th>
+                            <th>Hand Score Item Types</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>MCA III-S1-Mathematics-3</td>
+                            <td><input type="text" size="5" value="10" maxlength="10" /></td>
+                            <td><input type="text" size="5" value="3" maxlength="10" /></td>
+                            <td><input type="text" size="15" value="0.0" maxlength="20" /></td>
+                            <td><input type="text" size="10" value="1.0" maxlength="20" /></td>
+                            <td><input type="text" size="10" value="0.0" maxlength="20" /></td>
+                            <td><input type="text" size="10" value="" maxlength="256" /></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+            <a id="add-test-submit" class="button" href="#">Save</a> <a id="add-test-cancel" href="#" class="button no"> Cancel</a>
+    	</div>
+	</div>
+
+    <!-- Edit Simulation Test Property Window -->
+    <div class="window editSimProp" style="display:none;" id="alterSimTest">
+    	<h2 class="windowTitle">Modify Simulation Test Property</h2>
+        <div class="windowBody">
+            <p>Test ID: <span id="alter-test-testID"></span> </p>
+            <br />
+            <form>
+	            <fieldset>
+            	    <legend>Session Test Simulation Properties</legend>
+                    <label for="simIteration">Iterations:</label>
+                    <input id="alter-test-simIteration" name="simIteration" type="text" size="5" maxlength="10" />
+                    <span class="clear"  />
+                    <label for="simOpps">Opportunity:</label>
+                    <input id="alter-test-simOpps" name="simOpps" type="text" size="5" maxlength="10"/>
+                    <span class="clear"  />
+                    <label for="simMean">Mean Proficency:</label>
+                    <input id="alter-test-simMean" name="simMean" type="text" size="20" maxlength="20" />
+                    <span class="clear"  />
+                    <label for="simDeviation">Std. Dev. of Proficency:</label>
+                    <input id="alter-test-simDeviation" name="simDeviation" type="text" size="10" maxlength="20" />
+                    <span class="clear"  />
+                    <label for="simStrand">Strand Correlation:</label>
+                    <input id="alter-test-simStrand" name="simStrand" type="text" size="10" maxlength="20" />
+                    <span class="clear"  />
+                    <label for="simHandScoreItemTypes">Hand Score Item Types:</label>
+                    <select id="alter-test-simHandScoreItemTypes" name="simHandScoreItemTypes" multiple="multiple" size="5" > 
+                    </select>
+                    <br class="clear" />
+                </fieldset>
+                <br class="clear" />
+            </form>
+            <a id="alter-test-submit" class="button" href="#">Save</a> <a id="alter-test-cancel" href="#" class="button no"> Cancel</a>
+    	</div>
+    </div>
+
+    <!-- Delete Simulation Window --> 
+    <div class="window deleteSim" style="display:none;" id="deleteSim">
+    	<h2 class="windowTitle">Alert</h2>
+        <div class="windowBody">
+        	<p>Are you sure you want to Delete the Session Test?</p>     
+	       	<a href="#" id="delete-submit" class="button"> Yes</a> <a id="delete-cancel" class="button no" href="#">No</a> 
+
+	    </div>
+    </div>  
+
+    <!-- Start main body code -->
+    <div id="simApp">
+        <div id="clientSelect">
+            <label>Client:</label>
+            <select id="ddlClientPicker" disabled="disabled">
+            </select>
+        
+        </div>
+        <div id="navigation">
+            <ul class="leftNav">
+				<li><a href="#{request.contextPath}/setup/Session_Dashboard.xhtml" class="current" id="navSetup">Setup Simulation Sessions</a></li>
+				<li><a href="#{request.contextPath}/Manage/Manage_Sessions.xhtml" id="navManage">Manage Simulation Sessions</a></li>
+				<li><a href="#{request.contextPath}/LoadConfigs/LoadConfigs.xhtml" id="navLoadConfigs">Load Test Packages</a></li>
+            </ul>
+            <br class="clear" />
+        </div>
+        <div id="main">
+            <div id="window" class="main-window">
+                <!-- Sim EDIT Tables and view -->
+                <div id="simEdit" style="display:none">
+	                <p class="breadcrumbs"> <a href="#{request.contextPath}/setup/Session_Dashboard.xhtml">Setup Simulation Session</a>&#60; Edit Session</p>
+        	        <h2>Modify Simulation Session: <h:outputText id="lblSessionID" value="#{sessionEdit.sessionID}"/></h2>
+                    <form>
+            	        <label for="desc">Description:</label><input id="tbDesc" type="text" name="desc" size="50" /> <br class="clear" />
+                        <label for="lang">Language:</label><select id="ddlLang" name="lang" disabled="disabled"></select> <br class="clear"  />
+                    </form>
+                    <p class="buttonRow">
+                        <a id="edit-sim-save" class="button" href="#">Update Description</a> 
+                        <a id="edit-sim-addTest" class="button" href="#">+Add Test to Session</a>
+                    </p>
+        	        <table id="tblSimEdit" class="simTable">
+            	        <thead>
+                	        <tr>
+                    	        <th>TestID</th>
+                                <th>Iterations</th>
+                                <th>Opps</th>
+                                <th>Mean Proficiency</th>
+                                <th>Std. Dev. of Prof</th>
+                                <th>Strand Correlation</th>
+                                <th>Hand Score Item Types</th>
+                                <th>Action</th>
+                                <th>Blueprint</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                	        <tr class="oddRow">
+                    	        <td>HSA_OP-Reading-4</td>
+                                <td>10</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0.8</td>
+                                <td></td>
+                                <td><a class="button edit" href="#"><span>&#xA0;</span>Edit</a>&#xA0;<a class="button delete" href="#"><span>&#xA0;</span>Delete</a></td>
+                                <td><a class="button edit" href="#"><span>&#xA0;</span>Manage Blueprint</a></td>
+                            </tr>
+                            <tr class="evenRow">
+                    	        <td>HSA_OP-Reading-4</td>
+                                <td>10</td>
+                                <td>3</td>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>0.8</td>
+                                <td></td>
+                                <td><a class="button edit" href="#"><span>&#xA0;</span>Edit</a>&#xA0;<a class="button delete" href="#"><span>&#xA0;</span>Delete</a></td>
+                                <td><a class="button edit" href="#"><span>&#xA0;</span>Manage Blueprint</a></td>
+                            </tr>
+                        </tbody>
+                    </table>	
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h:inputHidden id="ctl00_MainContent_hfsk" name="ctl00$MainContent$hfsk" value="#{sessionEdit.sessionKey}" />
+    <h:inputHidden id="ctl00_MainContent_hfcn" name="ctl00$MainContent$hfcn" value="#{sessionEdit.clientName}" />
+    <h:inputHidden id="ctl00_MainContent_hfst" name="ctl00$MainContent$hfst" value="#{sessionEdit.sessionType}" />
+    <h:inputHidden id="ctl00_MainContent_hfdn" name="ctl00$MainContent$hfdn" value="#{sessionEdit.description}" />
+    <h:inputHidden id="ctl00_MainContent_hflg" name="ctl00$MainContent$hflg" value="#{sessionEdit.language}" />
+    <h:inputHidden id="ctl00_MainContent_hfsid" name="ctl00$MainContent$hfsid" value="#{sessionEdit.sessionID}" />
+    <h:inputHidden id="ctl00_MainContent_hfnew" name="ctl00$MainContent$hfnew" value="#{sessionEdit.newSess}" />
+
+    <script type="text/javascript" src="#{request.contextPath}/Setup/Session_Edit.js"></script>
+
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+
+		<!-- Start main body code -->
+		<div id="simApp">
+			<div id="clientSelect"></div>
+			<div id="navigation">
+				<ul class="leftNav">
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main" class="main-window">
+				<div id="window">
+					<h2>Blueprint Validation Report</h2>
+					<p>&#xA0;</p>
+					<h3>
+						Validation Failed: <span id="numFatals"></span> fatal errors and <span id="numWarnings"></span> warnings
+					</h3>
+					<table id="tblBpSummary" class="simTable">
+						<thead>
+							<tr>
+								<th>Severity</th>
+								<th>Test</th>
+								<th>Error</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Fatal</td>
+								<td>Test Name Here</td>
+								<td>Invalid field test specs on fixed form test</td>
+							</tr>
+							<tr>
+								<td>Warning</td>
+								<td>Test Name Here</td>
+								<td>Invalid field test specs on fixed form test</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="BlueprintValidation.js"></script>
+	</ui:define>
+</ui:composition>

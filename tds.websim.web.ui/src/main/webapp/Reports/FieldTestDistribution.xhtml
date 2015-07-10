@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+
+		<!-- Start main body code -->
+		<div id="simApp">
+			<div id="clientSelect"></div>
+			<div id="navigation">
+				<ul class="leftNav">
+					<li><a href="#" class="current" id="navSetup">Reports</a></li>
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main" class="main-window">
+				<div id="window">
+					<h2>Field Test Distribution Report</h2>
+					<br />
+					<p>
+						<a id="btnExport" class="button export" href="#"><span>&#xA0;</span>Download CSV</a>
+					</p>
+					<br />
+					<table id="table-report-1" class="simTable">
+					</table>
+					<br />
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="FieldTestDistribution.js"></script>
+	</ui:define>
+</ui:composition>

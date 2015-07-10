@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui:composition template="../SiteMaster.xhtml" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<ui:define name="title">AIR Web Simulator</ui:define>
+	<ui:define name="MainContent">
+
+		<!-- Refresh Loading Modal -->
+		<div id="loadingPanel" style="display: none; background-color: #ffffff; border-style: solid; border-width: medium; border-color: #000000; width: 300px">
+			<div class="yui3-widget-bd">
+				<h3>Loading Report...</h3>
+				<img src="../Shared/images/interstitial_loading.gif" alt="loading..." />
+			</div>
+		</div>
+		<!-- Start main body code -->
+		<div id="simApp">
+			<div id="clientSelect"></div>
+			<div id="navigation">
+				<ul class="leftNav">
+					<li><a href="#" class="current" id="navSetup">Reports</a></li>
+				</ul>
+				<br class="clear" />
+			</div>
+			<div id="main" class="main-window">
+				<div id="window">
+					<h2>Scores Report</h2>
+					<br />
+					<p>
+						<a id="btnExport" class="button export" href="#"><span>&#xA0;</span>Download CSV</a>
+					</p>
+					<br />
+					<table id="table-report-2" class="simTable">
+					</table>
+					<br class="clear" /> <br />
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript" src="Scores.js"></script>
+	</ui:define>
+</ui:composition>

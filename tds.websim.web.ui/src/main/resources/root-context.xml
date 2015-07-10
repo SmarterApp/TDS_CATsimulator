@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:jee="http://www.springframework.org/schema/jee"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<annotation-driven />
+	<context:annotation-config />
+		
+	<beans:import resource="classpath:opentestsystem.shared.common-context-module.xml" />
+	<beans:import resource="classpath:opentestsystem.shared.security-context-module.xml" /> 
+	<beans:import resource="classpath:opentestsystem.shared.tr-api-context-module.xml" />
+	<beans:import resource="classpath:opentestsystem.shared.db-context-module.xml" />
+	<beans:import resource="classpath:opentestsystem.itemselection.context-module.xml" />
+		
+ 	<context:property-placeholder ignore-unresolvable="true" order="100" location="classpath:settings.xml" />
+	<beans:bean factory-bean="appSettings" factory-method="updateProperties"
+		lazy-init="false">
+		<beans:constructor-arg>
+			<util:map map-class="java.util.HashMap">
+				<beans:entry key="DBDialect" value="${DBDialect}" />
+				<beans:entry key="ClientName" value="${ClientName}" />
+				<beans:entry key="AppName" value="${AppName}" />	
+				<beans:entry key="TDSSessionDBName" value="${TDSSessionDBName}" />
+				<beans:entry key="ItembankDBName" value="${ItembankDBName}" />
+				<beans:entry key="TDSArchiveDBName" value="${TDSArchiveDBName}" />
+				<beans:entry key="TDSConfigsDBName" value="${TDSConfigsDBName}" />				
+			</util:map>
+		</beans:constructor-arg>
+	</beans:bean>
+	
+	<beans:bean id="tdsSettings" class="TDS.Shared.Configuration.TDSSettings" scope="prototype" />
+		
+	<beans:bean id="applicationDataSource" destroy-method="close"
+		  class="com.mchange.v2.c3p0.ComboPooledDataSource" >
+		    <beans:property name="driverClass" value="${datasource.driverClassName:com.mysql.jdbc.Driver}"/>
+		    <beans:property name="jdbcUrl" value="${jdbc.url}/${TDSSessionDBName}${AdditionalUrlParm}"/>
+		    <beans:property name="user" value="${jdbc.userName}"/>
+		    <beans:property name="password" value="${jdbc.password}"/>
+		    <beans:property name="minPoolSize" value="${datasource.minPoolSize:20}"/>
+		<beans:property name="acquireIncrement" value="${datasource.acquireIncrement:20}" />
+		<beans:property name="maxPoolSize" value="${datasource.maxPoolSize:2000}" />
+		<beans:property name="checkoutTimeout" value="${datasource.checkoutTimeout:58000}" />
+		<!--  <beans:property name="preferredTestQuery" value="SELECT 1" /> -->
+		<beans:property name="maxConnectionAge" value="${datasource.maxConnectionAge:0}"/>
+		<beans:property name="acquireRetryAttempts" value="${datasource.acquireRetryAttempts:5}"/>
+		<beans:property name="idleConnectionTestPeriod" value="${datasource.idleConnectionTestPeriod:14400}" />
+        <beans:property name="testConnectionOnCheckout" value="${datasource.testConnectionOnCheckout:false}" />
+        <beans:property name="testConnectionOnCheckin" value="${datasource.testConnectionOnCheckin:false}" />
+	    <beans:property name="numHelperThreads" value="${datasource.numHelperThreads:20}" />
+        <beans:property name="maxStatements" value="${datasource.maxStatements:2000}" />  
+        <beans:property name="maxStatementsPerConnection" value="${datasource.maxStatementsPerConnection:1000}" />
+	</beans:bean>	
+	
+	<beans:bean id="itemBankDataSource" destroy-method="close"
+		  class="com.mchange.v2.c3p0.ComboPooledDataSource" >
+		    <beans:property name="driverClass" value="${datasource.driverClassName:com.mysql.jdbc.Driver}"/>
+		    <beans:property name="jdbcUrl" value="${jdbc.url}/${ItembankDBName}${AdditionalUrlParm}"/>
+		    <beans:property name="user" value="${jdbc.userName}"/>
+		    <beans:property name="password" value="${jdbc.password}"/>
+		    <beans:property name="minPoolSize" value="${datasource.minPoolSize:1200}"/>
+		<beans:property name="acquireIncrement" value="${datasource.acquireIncrement:500}" />
+		<beans:property name="maxPoolSize" value="${datasource.maxPoolSize:1200}" />
+		<beans:property name="checkoutTimeout" value="${datasource.checkoutTimeout:60000}" />
+		<beans:property name="preferredTestQuery" value="SELECT 1" />
+		<beans:property name="maxConnectionAge" value="${datasource.maxConnectionAge:0}"/>
+		<beans:property name="acquireRetryAttempts" value="${datasource.acquireRetryAttempts:30}"/>
+ 	</beans:bean>
+	 
+	<context:component-scan base-package="dbsimulator" />
+	<context:component-scan base-package="tds.websim.bll.model" />
+	<context:component-scan base-package="tds.dll.mysql" />
+	<context:component-scan base-package="tds.websim.dal.mysql" />
+	<context:component-scan base-package="tds.websim.bll.tasks" />	
+		 
+	<beans:bean id="simDAL" class="dbsimulator.dal.mysql.MySqlSimDal" scope="prototype">
+	<!--    <beans:property name="_itembank" value="${ItembankDBName}"/> -->
+	</beans:bean>
+	<beans:bean id="simDALSpringFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+     	<beans:property name="targetBeanName"><beans:idref local="simDAL"/></beans:property>
+   	</beans:bean>
+    <beans:bean id="simDALClientFactory" class="dbsimulator.SimDalFactory">
+		<beans:property name="factory" ref="simDALSpringFactory"/>
+	</beans:bean>
+		
+	<beans:bean id="simSession" class="dbsimulator.SimSession" scope="prototype"/>
+	<beans:bean id="simSessionSpringFactory" class="org.springframework.beans.factory.config.ObjectFactoryCreatingFactoryBean">
+     	<beans:property name="targetBeanName"><beans:idref local="simSession"/></beans:property>
+   	</beans:bean>
+    <beans:bean id="simSessionClientFactory" class="dbsimulator.SimSessionFactory">
+		<beans:property name="factory" ref="simSessionSpringFactory"/>
+	</beans:bean>
+		
+	<beans:bean id="aironline" class="tds.itemselection.aironline.AIROnline2013" />
+    
+	<beans:bean id="iSimDLL" class="tds.dll.mysql.SimDLL" />
+	<beans:bean id="iStudentDLL" class="tds.dll.mysql.StudentDLL" />
+	<beans:bean id="iEncryption" class="TDS.Shared.Web.Encryption"/>	
+	<beans:bean id="iCommonDLL" class="tds.dll.mysql.CommonDLL" />
+	<beans:bean id="iProctorDLL" class="tds.dll.mysql.ProctorDLL" />
+	<beans:bean id="itemSelDLL" class="tds.dll.mysql.ItemSelectionDLL" />
+	<beans:bean id="iRtsDLL" class="tds.dll.mysql.RtsDLL" primary="true" />
+	<beans:bean id="rtsPackageDLL" class="tds.dll.mysql.RtsPackageDLL" />
+	<beans:bean id="irepDLL" class="tds.dll.mysql.ReportingDLL" />
+	<beans:bean id="abstractDateUtilDll" class="tds.dll.mysql.DateUtilDLL"/>	
+				
+	<beans:bean id="abstractConnectionManager" class="AIR.Common.DB.AbstractConnectionManager">
+		<beans:property name="databaseDialect" value="${DBDialect}"/>
+		<beans:property name="dataSource" ref="applicationDataSource"/>
+	</beans:bean>	
+</beans:beans>

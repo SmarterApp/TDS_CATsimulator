@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-2.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<!-- (Tongliang:) Below defs were tested to work correctly -->
+
+	<annotation-driven />
+	<context:annotation-config />
+
+	<!-- TDSSettings bean. This gives access to clientname and any other info 
+		such as session type etc. -->
+	<beans:bean id="tdsSettings" class="TDS.Shared.Configuration.TDSSettings"
+		scope="prototype" />
+
+	<!-- ====================== -->
+	<!-- Begin def for DAO test -->
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~ -->
+	<context:component-scan base-package="tds.websim.dal" />
+
+	<beans:bean factory-bean="appSettings" factory-method="updateProperties"
+		lazy-init="false">
+		<beans:constructor-arg>
+			<util:map map-class="java.util.HashMap">
+				<beans:entry key="DBDialect" value="SQLSERVER" />
+			</util:map>
+		</beans:constructor-arg>
+	</beans:bean>
+
+	<!-- Wire a DataSource (since we probably aren't running in a webapp container) -->
+	<beans:bean id="applicationDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<beans:property name="jdbcUrl"
+			value="jdbc:sqlserver://38.118.82.146;DatabaseName=TDSCore_test_Session_2012" />
+		<beans:property name="user" value="dbtds" />
+		<beans:property name="password" value="KOJ89238876234rUHJ" />
+	</beans:bean>
+
+	<beans:bean id="itemBankDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<beans:property name="jdbcUrl"
+			value="jdbc:sqlserver://38.118.82.146;DatabaseName=TDSCore_test_ItemBank_2012" />
+		<beans:property name="user" value="dbtds" />
+		<beans:property name="password" value="KOJ89238876234rUHJ" />
+	</beans:bean>
+	<!-- ~~~~~~~~~~~~~~~~~~~~ -->
+	<!-- End def for DAO test -->
+	<!-- ==================== -->
+
+</beans:beans>

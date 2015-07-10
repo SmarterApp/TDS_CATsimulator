@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core" xmlns:tds="http://airast.org/jsfcustom"
+	xmlns:p="http://java.sun.com/jsf/passthrough" xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>AIR Web Simulator Login</title>
+	<link href="Shared/css/reset.css" type="text/css" rel="stylesheet" />
+	<link type="text/css" rel="stylesheet" href="Shared/css/login.css" media="screen" />
+</h:head>
+
+<h:body>
+	<h:form id="form1">
+		<div class="wrapper">
+			<div class="header">
+				<div class="topBar">
+					<div class="smallButtons">
+						<a id="lnkHelp"><span>Help</span></a>
+					</div>
+					<span class="clear"></span>
+				</div>
+
+				<div class="logos">
+					<div class="brand1">
+						<h2>AIR Web-Based Test Simulator</h2>
+					</div>
+				</div>
+
+				<div class="brand2">
+					<h3>AIR Web-Based Test Simulator</h3>
+					<span class="clear"></span>
+				</div>
+			</div>
+			<!-- ends header -->
+
+			<div class="centerThis contentWrapper">
+				<!-- this is for the PT site-->
+				<div class="green login">
+					<div class="shadowBox">
+						<div class="box2">
+							<span class="topShadow"><em></em><strong></strong></span>
+							<div style="display: block;" id="divContent" class="content">
+								<h2>Please Log In</h2>
+								<div class="formWrapper">
+									<div class="identity">
+										<label><span class="spacer">Username:</span> <h:inputText name="txtUsername" size="26" id="txtUsername" type="text" value="#{loginBacking.userId}" /> <span id="valUserName"
+											class="loginValid" style="color: Red; visibility: hidden;">User Name Required</span> </label> <label> <span class="spacer">Password:</span> <h:inputSecret name="txtPassword" size="26"
+												id="txtPassword" type="password" value="#{loginBacking.password}" /> <span id="valPassword" class="loginValid" style="color: Red; visibility: hidden;">Password Required</span>
+										</label> <span id="lblInstructionText" style="color: Red;"></span>
+									</div>
+
+									<div class="choices">
+										<h:commandLink id="btnLogin" styleClass="greenBtn" action="#{loginBacking.btnLoginOnClick}">
+											<span>Sign In</span>
+										</h:commandLink>
+										<span class="clear"></span>
+									</div>
+									<span class="clear"></span>
+
+									<h:messages ID="LabelMsg" style="font-size: xx-large; font-weight: bold;" />
+								</div>
+								<div class="instructions">
+									<p>&#xA0;</p>
+								</div>
+
+							</div>
+							<div id="divTurnOffPopupBlocker" style="display: none">
+								<div class="instructions">
+									<p>This site is for authorized Test Monitors only and cannot be used with the operational tests. It may be used as a training tool to familiarize Test Monitors with the Online Testing
+										System or to administer test sessions in conjunction with the Online Item Samplers.</p>
+									<br /><br />
+									 <a href="#" onclick="window.location.reload();" class="greenBtn"><span>Refresh</span></a>
+									<p>&#xA0;</p>
+								</div>
+							</div>
+							<span class="bottomShadow"><em></em><strong></strong></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+				<span>Organization Name</span> | 1500 Street , City, ZZ 00000
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>
