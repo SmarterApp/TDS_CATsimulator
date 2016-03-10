@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.opentestsystem.delivery</groupId>
 	<artifactId>dbsimulator</artifactId>
-	<version>0.0.1</version>
+	<version>0.0.1-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -12,63 +12,63 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds.websim.model</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-common</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-db</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-log4j</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-test</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-security</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-web</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-xml</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-config</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-master</artifactId>
-			<version>1.0.1</version>
+			<version>1.0.1-BUILD-SNAPSHOT</version>
 			<type>pom</type>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>testscoring</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-itemselection-aironline</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.tomcat</groupId>
@@ -114,22 +114,22 @@
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-mssql</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-dll-mysql</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-itemselection-common</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.delivery</groupId>
 			<artifactId>tds-itemselection-impl</artifactId>
-			<version>0.0.1</version>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
 	<build>
