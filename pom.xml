@@ -5,6 +5,8 @@
 	<artifactId>tds.websim.master</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
+	<name>TDS WebSim Master</name>
+
 	<modules>
 		<module>tds.websim.bll</module>
 		<module>tds.websim.dal</module>
@@ -13,12 +15,13 @@
 		<module>tds.websim.web.ui</module>
 		<module>dbsimulator</module>
 	</modules>
-	<name>TDS WebSim Master</name>
+
 	<parent>
 		<groupId>org.opentestsystem.shared</groupId>
 		<artifactId>shared-master</artifactId>
-		<version>1.0.1-BUILD-SNAPSHOT</version>
+		<version>3.0.1</version>
 	</parent>
+
 	<licenses>
 		<license>
 			<name>AIR-License-1.0</name>
@@ -27,6 +30,32 @@
 			<comments>Educational Online Test Delivery System Copyright (c) 2013 American Institutes for Research</comments>
 		</license>
 	</licenses>
+
+	<properties>
+		<shared-master.version>3.0.1</shared-master.version>
+		<tds-dll.version>0.0.1-SNAPSHOT</tds-dll.version>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.opentestsystem.delivery</groupId>
+				<artifactId>tds-dll-api</artifactId>
+				<version>${tds-dll.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.opentestsystem.delivery</groupId>
+				<artifactId>tds-dll-mssql</artifactId>
+				<version>${tds-dll.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.opentestsystem.delivery</groupId>
+				<artifactId>tds-dll-mysql</artifactId>
+				<version>${tds-dll.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
