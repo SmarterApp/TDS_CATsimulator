@@ -32,22 +32,45 @@
 	</licenses>
 
 	<properties>
+		<item-selection.version>3.0.0</item-selection.version>
 		<shared-master.version>3.0.1</shared-master.version>
 		<tds-dll.version>3.0.0</tds-dll.version>
 	</properties>
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- TDS item selection dependencies -->
+			<dependency>
+				<groupId>org.opentestsystem.delivery</groupId>
+				<artifactId>tds-itemselection-aironline</artifactId>
+				<version>${item-selection.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.opentestsystem.delivery</groupId>
+				<artifactId>tds-itemselection-common</artifactId>
+				<version>${item-selection.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.opentestsystem.delivery</groupId>
+				<artifactId>tds-itemselection-impl</artifactId>
+				<version>${item-selection.version}</version>
+			</dependency>
+
+			<!-- TDS DLL dependencies -->
 			<dependency>
 				<groupId>org.opentestsystem.delivery</groupId>
 				<artifactId>tds-dll-api</artifactId>
 				<version>${tds-dll.version}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.opentestsystem.delivery</groupId>
 				<artifactId>tds-dll-mssql</artifactId>
 				<version>${tds-dll.version}</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.opentestsystem.delivery</groupId>
 				<artifactId>tds-dll-mysql</artifactId>
