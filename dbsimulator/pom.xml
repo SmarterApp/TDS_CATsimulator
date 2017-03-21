@@ -30,7 +30,6 @@
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-log4j</artifactId>
-			<version>${shared-master.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>

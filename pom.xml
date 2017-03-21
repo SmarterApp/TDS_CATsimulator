@@ -19,7 +19,7 @@
 	<parent>
 		<groupId>org.opentestsystem.shared</groupId>
 		<artifactId>shared-master</artifactId>
-		<version>3.0.1</version>
+		<version>3.0.3</version>
 	</parent>
 
 	<licenses>
@@ -33,7 +33,6 @@
 
 	<properties>
 		<item-selection.version>3.0.0</item-selection.version>
-		<shared-master.version>3.0.1</shared-master.version>
 		<tds-dll.version>3.0.0</tds-dll.version>
 	</properties>
 
