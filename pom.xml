@@ -33,7 +33,7 @@
 
 	<properties>
 		<item-selection.version>3.0.3</item-selection.version>
-		<tds-dll.version>3.0.1</tds-dll.version>
+		<tds-dll.version>3.1.0.RELEASE</tds-dll.version>
 	</properties>
 
 	<dependencyManagement>
