@@ -30,7 +30,7 @@
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-log4j</artifactId>
-			<version>1.0.1-BUILD-SNAPSHOT</version>
+			<version>3.1.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
@@ -39,7 +39,7 @@
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
 			<artifactId>shared-security</artifactId>
-			<version>1.0.1-BUILD-SNAPSHOT</version>
+			<version>3.1.0.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.opentestsystem.shared</groupId>
