@@ -32,7 +32,7 @@
 	</licenses>
 
 	<properties>
-		<item-selection.version>3.0.3</item-selection.version>
+		<item-selection.version>3.1.0.RELEASE</item-selection.version>
 		<tds-dll.version>3.1.0.RELEASE</tds-dll.version>
 	</properties>
 
