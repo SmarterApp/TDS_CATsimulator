@@ -31,8 +31,8 @@
 	</licenses>
 
 	<properties>
-		<item-selection.version>3.1.0.RELEASE</item-selection.version>
-		<tds-dll.version>3.1.0.RELEASE</tds-dll.version>
+		<item-selection.version>3.1.1.RELEASE</item-selection.version>
+		<tds-dll.version>3.1.1.RELEASE</tds-dll.version>
 	</properties>
 
 	<dependencyManagement>
