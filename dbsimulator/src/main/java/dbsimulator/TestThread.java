@@ -264,7 +264,7 @@ public class TestThread implements Runnable {
 
       while (!_dal.abort() && !_dal.isOppComplete(oppkey)) {
         ++page;
-        itemgroup = _air.getNextItemGroup(_dal.getSQLConnection(), UUID.fromString(oppkey), error);
+        itemgroup = _air.getNextItemGroup(_dal.getSQLConnection(), UUID.fromString(oppkey), false, error);
         if (error.get() != null || itemgroup == null || itemgroup.items.size() < 1) {
           if (error.get() != null
               && "Test Complete".equalsIgnoreCase(error.get())
@@ -275,7 +275,7 @@ public class TestThread implements Runnable {
           }
           _sim_messages += "\n" + error.get() != null ? error.get()
               : "Unable to select next itemgroup";
-          itemgroup = _air.getNextItemGroup(_dal.getSQLConnection(), UUID.fromString(oppkey), error); 
+          itemgroup = _air.getNextItemGroup(_dal.getSQLConnection(), UUID.fromString(oppkey), false, error);
           return false;
         }
 
