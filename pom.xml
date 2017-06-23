@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.opentestsystem.delivery</groupId>
 	<artifactId>tds.websim.master</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>3.1.1.RELEASE</version>
 	<packaging>pom</packaging>
 	<name>TDS WebSim Master</name>
 
@@ -99,7 +99,7 @@
 		<connection>scm:git:https://github.com/SmarterApp/TDS_CATsimulator.git</connection>
 		<developerConnection>scm:git:git://github.com/SmarterApp/TDS_CATsimulator.git</developerConnection>
 		<url>https://github.com/SmarterApp/TDS_CATsimulator</url>
-		<tag>HEAD</tag>
+		<tag>3.1.1.RELEASE</tag>
 	</scm>
 
 	<distributionManagement>
