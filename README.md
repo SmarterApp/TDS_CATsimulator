@@ -32,6 +32,7 @@ This is the work horse module of the simulator spawning necessary threads, itera
 This module provides abstractions around session and itembank databases to give necessary data services. 
 
 ## Configuration
+- Do not install the Simulator at the root directory of your server
 - Setup the necessary itembank, config and session MySQL databases for simulation
 - Load test packages necessary for simulation into the itembank
 - User need to have an account to run simulations. Accounts are created by authorized users in the session database used for simulation.
