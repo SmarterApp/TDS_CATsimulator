@@ -4,7 +4,7 @@
 * A standard sized Linux OS wtih Tomcat 8.0 and Java 1.7 should be sufficient to host the web application
 
 
-**Installation Steps**
+**Installation and Configuration Steps**
 1. Download version 3.1.1 of the .war web application archive file. The .war file can be found on the Smarter Balanced Artifactory site at https://airdev.artifactoryonline.com/airdev/webapp/#/artifacts/browse/tree/General/libs-releases-local/org/opentestsystem/delivery/tds.websim.web.ui/3.1.1.RELEASE/tds.websim.web.ui-3.1.1.RELEASE.war
 
 2. Place the .war file in the webapps directory of the tomcat installation and start tomcat
