@@ -13,9 +13,12 @@
 3. Once the .war file has been deployed, edit the settings.xml file found in the WEB-INF/classes directory
     * Edit the jdbc.url, jdbc.userName, and jdbc.password values for the TDS database instance that will be used for the simulator.
     * Make sure the database names are the following
-    > TDSSessionDBName -> session
+    > TDSSessionDBName -> session 
+    >
     > ItembankDBName -> itembank
+    >
     > TDSArchiveDBName -> archive
+    >
     > TDSConfigsDBName -> configs
     * Restart the tomcat instance once the settings.xml file has been edited and saved
 
